@@ -1,5 +1,39 @@
-" load plugins
-execute pathogen#infect()
+" verify if vim-plug is installed, install if not
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+" source .vimrc if modified
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+" enable syntax highlighting
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable " Enable syntax highlighting
+endif
+
+" install missing plugins
+call plug#begin('~/.vim/plugged')
+	Plug 'kien/ctrlp.vim'
+	Plug 'scrooloose/nerdtree'
+	Plug 'myusuf3/numbers.vim'
+	Plug 'Lokaltog/vim-powerline'
+	Plug 'vim-syntastic/syntastic'
+	Plug 'edkolev/tmuxline.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'altercation/vim-colors-solarized'
+	Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-sensible'
+	Plug 'suan/vim-instant-markdown'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'jistr/vim-nerdtree-tabs'
+	Plug 'myhere/vim-nodejs-complete'
+call plug#end()
 
 " general
 set backspace=indent,eol,start
@@ -27,6 +61,8 @@ set foldenable
 set foldlevelstart=10
 set autoread
 set hidden
+set nocompatible
+set t_Co=256
 
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -54,7 +90,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" tmuxline
+" tmuxline config
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'win'  : ['#I', '#W'],
@@ -67,10 +103,9 @@ autocmd StdinReadPre * let s:std_in=1
 map <C-o> :NERDTreeTabsToggle<CR>
 
 " powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 
-" airline
-let g:airline_theme='solarized'
+" airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
