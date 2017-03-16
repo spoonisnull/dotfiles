@@ -98,7 +98,7 @@ let g:tmuxline_preset = {
       \'y'    : ['%R', '%a', '%Y'],
       \'z'    : '#H'}
 
-" nerd tree
+" nerd tree config
 autocmd StdinReadPre * let s:std_in=1
 map <C-o> :NERDTreeTabsToggle<CR>
 
