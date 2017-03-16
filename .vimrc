@@ -102,7 +102,7 @@ let g:tmuxline_preset = {
 autocmd StdinReadPre * let s:std_in=1
 map <C-o> :NERDTreeTabsToggle<CR>
 
-" powerline
+" powerline config
 set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 
 " airline symbols
