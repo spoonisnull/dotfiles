@@ -35,7 +35,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'myhere/vim-nodejs-complete'
 call plug#end()
 
-" general
+" general config
 set backspace=indent,eol,start
 set laststatus=2
 set noshowmode

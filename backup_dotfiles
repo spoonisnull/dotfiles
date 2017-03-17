@@ -6,6 +6,6 @@ cp /bin/backup_dotfiles ~/Dropbox/dotfiles/ &&
 
 # commit & push changes to github dotfiles repo
 cd ~/Dropbox/dotfiles &&
-git commit .bashrc .tmux.conf .vimrc backup_dotfiles -m "updated dotfiles"
+git commit .bashrc .tmux.conf .vimrc backup_dotfiles -m "updated dotfiles" &&
 git push
 
