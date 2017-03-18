@@ -72,9 +72,9 @@ xterm*|rxvt*)
     ;;
 esac
 
-# run tmux by default
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux -2
+# run tmux by default - disabled for ability to create custom named sessions on-demand instead
+# [[ $- != *i* ]] && return
+# [[ -z "$TMUX" ]] && exec tmux -2
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
