@@ -70,8 +70,8 @@ filetype plugin indent on
 syntax enable
 
 " buffer management
-map <C-h> :bp <CR>
-map <C-l> :bn <CR>
+map <C-S-h> :bp <CR>
+map <C-S-l> :bn <CR>
 
 " move lines mapping on Ctrl+hjkl
 nnoremap <C-j> :m .+1<CR>==
