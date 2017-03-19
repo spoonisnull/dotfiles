@@ -1,5 +1,4 @@
 # newsbeuter rss reader config
-
 auto-reload yes
 browser google-chrome
 cleanup-on-quit yes
@@ -19,6 +18,7 @@ bind-key j down article
 bind-key k up article
 ignore-mode "display"
 
+# colorscheme
 color background        default   default
 color listnormal        default   default
 color listnormal_unrad	yellow    default

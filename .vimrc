@@ -34,14 +34,20 @@ call plug#begin('~/.vim/plugged')
 	Plug 'myhere/vim-nodejs-complete'
 call plug#end()
 
+" solarized config
+colorscheme solarized
+set background=dark
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:Powerline_symbols = 'fancy'
+call togglebg#map("<F5>")
+
 " general config
 set backspace=indent,eol,start
 set laststatus=2
 set noshowmode
 set showtabline=2
-set cursorline
 set number
-"set colorcolumn=80
 set encoding=utf-8
 set wildmenu
 set showcmd
@@ -62,15 +68,12 @@ set autoread
 set hidden
 set nocompatible
 set t_Co=256
+set tabstop=2
 
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 filetype plugin indent on
 syntax enable
-
-" buffer management
-"nnoremap <C-]> :bn <CR>
-"nnoremap <C-[> :bp <CR>
 
 " move lines mapping on Ctrl+hjkl
 nnoremap <C-j> :m .+1<CR>==
@@ -102,11 +105,6 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
-" solarized config
-set background=dark
-colorscheme solarized
-let g:Powerline_symbols = 'fancy'
-call togglebg#map("<F5>")
 
 " buffer selector function
 function! FuzzyBufferSelect(pattern)
@@ -139,3 +137,4 @@ endfunction
 
 " binding for FuzzyBufferSelect
 command! -nargs=1 Bs :call FuzzyBufferSelect("<args>")
+
