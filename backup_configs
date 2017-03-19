@@ -5,8 +5,11 @@ cp ~/.vimrc ~/Dropbox/dotfiles/ &&
 cp /bin/backup_configs ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 
-# commit & push changes to github dotfiles repo
+
+
+# add, commit & push all files
 cd ~/Dropbox/dotfiles &&
+git add -A &&
 git commit -am "updated config/dotfiles" &&
 git push
 
