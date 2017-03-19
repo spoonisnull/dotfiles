@@ -1,13 +1,12 @@
 # update all config files in dropbox
-cp ~/.bashrc Dropbox/dotfiles/ &&
-cp ~/.tmux.conf Dropbox/dotfiles/ &&
-cp ~/.vimrc Dropbox/dotfiles/ &&
-cp /bin/backup_configs Dropbox/dotfiles/ &&
-cp ~/.newsbeuter/urls Dropbox/dotfiles/ &&
+cp ~/.bashrc ~/Dropbox/dotfiles/ &&
+cp ~/.tmux.conf ~/Dropbox/dotfiles/ &&
+cp ~/.vimrc ~/Dropbox/dotfiles/ &&
+cp /bin/backup_configs ~/Dropbox/dotfiles/ &&
+cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 
 # commit & push changes to github dotfiles repo
-cd Dropbox/dotfiles &&
-git add -A &&
+cd ~/Dropbox/dotfiles &&
 git commit -am "updated config/dotfiles" &&
 git push
 
