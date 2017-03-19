@@ -70,8 +70,8 @@ filetype plugin indent on
 syntax enable
 
 " buffer management
-map <C-S-h> :bp <CR>
-map <C-S-l> :bn <CR>
+nnoremap <C-Right> :bn <CR>
+nnoremap <C-Left> :bp <CR>
 
 " move lines mapping on Ctrl+hjkl
 nnoremap <C-j> :m .+1<CR>==
@@ -116,5 +116,4 @@ set background=dark
 colorscheme solarized
 let g:Powerline_symbols = 'fancy'
 call togglebg#map("<F5>")
-
 
