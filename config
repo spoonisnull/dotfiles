@@ -3,7 +3,6 @@
 auto-reload yes
 browser google-chrome
 cleanup-on-quit yes
-download-path "/home/zsolt/Downloads/podcasts"
 feed-sort-order title-dec
 refresh-on-startup yes
 reload-time 20
@@ -18,17 +17,15 @@ bind-key J next-feed articlelist
 bind-key K prev-feed articlelist
 bind-key j down article
 bind-key k up article
-ignore-article "*" "title =~ \"Sponsor\""
-ignore-article "*" "title =~ \"Advertisement\""
 ignore-mode "display"
 
-color background   default   default
-color listnormal   default   default
-color listfocus    black     yellow
-color info         default   black
-color article      default   default
-
-# highlights
+color background        default   default
+color listnormal        default   default
+color listnormal_unrad	yellow    default
+color listfocus         black	  yellow
+color listfocus_unead   black     yellow
+color info              default   black
+color article           default   default
 highlight article "^(Title):.*$" blue default
 highlight article "https?://[^ ]+" red default
 highlight article "\\[image\\ [0-9]+\\]" green default
