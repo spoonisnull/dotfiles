@@ -1,3 +1,5 @@
+# newsbeuter rss reader config
+
 auto-reload yes
 browser google-chrome
 cleanup-on-quit yes

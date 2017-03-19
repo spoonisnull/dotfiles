@@ -17,7 +17,6 @@ endif
 
 " install missing plugins
 call plug#begin('~/.vim/plugged')
-	Plug 'kien/ctrlp.vim'
 	Plug 'scrooloose/nerdtree'
 	Plug 'myusuf3/numbers.vim'
 	Plug 'Lokaltog/vim-powerline'
