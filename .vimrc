@@ -70,8 +70,8 @@ filetype plugin indent on
 syntax enable
 
 " buffer management
-nnoremap <C-Right> :bn <CR>
-nnoremap <C-Left> :bp <CR>
+"nnoremap <C-]> :bn <CR>
+"nnoremap <C-[> :bp <CR>
 
 " move lines mapping on Ctrl+hjkl
 nnoremap <C-j> :m .+1<CR>==
@@ -116,4 +116,36 @@ set background=dark
 colorscheme solarized
 let g:Powerline_symbols = 'fancy'
 call togglebg#map("<F5>")
+
+" buffer selector function
+function! FuzzyBufferSelect(pattern)
+	let buffercount = bufnr("$")
+	let currentbuffernumber = 1
+	let numberofmatches = 0
+	let firsmatchingbuffernumber = 0
+	while currentbuffernumber <= buffercount
+		if(bufexists(currentbuffernumber))
+			let currentbuffername = bufname(currentbuffernumber)
+			if(match(currentbuffername, a:pattern) > -1)
+				echo currentbuffernumber . ": ". bufname(currentbuffernumber)
+				let numberofmatches += 1
+				let firstmatchingbuffernumber = currentbuffernumber
+			endif
+		endif
+		let currentbuffernumber = currentbuffernumber + 1
+	endwhile
+	if(numberofmatches == 1)
+		execute ":buffer ". firstmatchingbuffernumber
+	elseif(numberofmatches > 1)
+		let desiredbuffernumber = input("Enter buffer number: ")
+		if(strlen(desiredbuffernumber) != 0)
+			execute ":buffer ". desiredbuffernumber
+		endif
+	else
+		echo "No matching buffers."
+	endif
+endfunction
+
+" binding for FuzzyBufferSelect
+command! -nargs=1 Bs :call FuzzyBufferSelect("<args>")
 
