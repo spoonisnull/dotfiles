@@ -148,4 +148,3 @@ endfunction
 
 " binding for FuzzyBufferSelect
 command! -nargs=1 Bs :call FuzzyBufferSelect("<args>")
-
