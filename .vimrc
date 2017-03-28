@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'myusuf3/numbers.vim'
 	Plug 'Lokaltog/vim-powerline'
 	Plug 'vim-syntastic/syntastic'
-	Plug 'edkolev/tmuxline.vim'
+"	Plug 'edkolev/tmuxline.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'altercation/vim-colors-solarized'
