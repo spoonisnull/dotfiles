@@ -32,7 +32,10 @@ call plug#begin('~/.vim/plugged')
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'myhere/vim-nodejs-complete'
+	Plug 'othree/html5.vim'
 call plug#end()
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " solarized config
 colorscheme solarized
@@ -69,6 +72,7 @@ set hidden
 set nocompatible
 set t_Co=256
 set tabstop=2
+
 
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
