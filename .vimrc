@@ -72,7 +72,7 @@ set hidden
 set nocompatible
 set t_Co=256
 set tabstop=2
-
+set path+=**
 
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
