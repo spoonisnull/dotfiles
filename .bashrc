@@ -72,9 +72,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-# run tmux by default
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux -2
+[[ $TERM != "screen" ]] && exec tmux -2
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -97,11 +95,8 @@ alias la='ls -A'
 alias l='ls -CF'
 alias update-fonts='fc-cache -f -v'
 alias svim='sudo vim'
-alias pi='ssh pi@192.168.0.38'
-alias cls='clear'
 
 # Add an "alert" alias for long running commands.  Use like so:
-# <form action="/some-server-somewhere" method="post">
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -128,4 +123,4 @@ fi
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. /usr/local/lib/python3.5/dist-packages/powerline/bindings/bash/powerline.sh
+. ~/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh

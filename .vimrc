@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'myusuf3/numbers.vim'
 	Plug 'Lokaltog/vim-powerline'
 	Plug 'vim-syntastic/syntastic'
-"	Plug 'edkolev/tmuxline.vim'
+	"Plug 'edkolev/tmuxline.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'altercation/vim-colors-solarized'
@@ -108,6 +108,8 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+let g:airline_symbols = get(g:,'airline_symbols',{})
+let g:airline_symbols.linenr = ''
 
 
 " buffer selector function
@@ -142,3 +144,4 @@ endfunction
 " binding for FuzzyBufferSelect
 command! -nargs=1 Bs :call FuzzyBufferSelect("<args>")
 
+let g:airline_theme='base16_google'
