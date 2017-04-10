@@ -1,14 +1,3 @@
-" verify if vim-plug is installed, install if not
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
-" source .vimrc if modified
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
 
 " enable syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
@@ -21,7 +10,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'myusuf3/numbers.vim'
 	Plug 'Lokaltog/vim-powerline'
 	Plug 'vim-syntastic/syntastic'
-	"Plug 'edkolev/tmuxline.vim'
+  Plug 'edkolev/tmuxline.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'altercation/vim-colors-solarized'
