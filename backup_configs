@@ -6,6 +6,8 @@ cp ~/.vimrc ~/Dropbox/dotfiles/ &&
 cp /bin/backup_configs ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/config ~/Dropbox/dotfiles/ &&
+cp ~/.tmux.conf ~/Dropbox/dotfiles/ &&
+
 
 
 # add, commit & push all files
