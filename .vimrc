@@ -62,6 +62,7 @@ set nocompatible
 set t_Co=256
 set tabstop=2
 set path+=**
+set cursorline
 
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -135,6 +136,10 @@ function! FuzzyBufferSelect(pattern)
 endfunction
 
 " binding for FuzzyBufferSelect
-command! -nargs=1 Bs :call FuzzyBufferSelect("<args>")
+command! -nargs=1 B :call FuzzyBufferSelect("<args>")
 
 let g:airline_theme='base16_google'
+
+" instant markdown config
+" let g:instant_markdown_slow = 1
+
