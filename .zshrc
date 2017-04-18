@@ -90,3 +90,6 @@ if [ "$TMUX" = "" ]; then tmux -2; fi
 . ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
 
 source  ~/Applications/powerlevel9k/powerlevel9k.zsh-theme
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs root_indicator vi_mode)

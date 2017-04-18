@@ -143,3 +143,10 @@ let g:airline_theme='base16_google'
 " instant markdown config
 " let g:instant_markdown_slow = 1
 
+" tmuxline config
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+			\'z'    : '%R'}
+
