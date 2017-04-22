@@ -69,6 +69,8 @@ else
   export EDITOR='mvim'
 fi
 
+export VIMRUNTIME=/usr/share/vim/vim80
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
