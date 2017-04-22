@@ -1,31 +1,35 @@
-# newsbeuter rss reader config
-auto-reload yes
-browser google-chrome
-cleanup-on-quit yes
-feed-sort-order title-dec
-refresh-on-startup yes
-reload-time 20
-reload-threads 2
-show-read-articles yes
-show-read-feeds yes
-bind-key j down feedlist
-bind-key k up feedlist
-bind-key j next articlelist
-bind-key k prev articlelist
-bind-key J next-feed articlelist
-bind-key K prev-feed articlelist
-bind-key j down article
-bind-key k up article
-ignore-mode "display"
-
-# colorscheme
-color background        									default   default
-color listnormal        									default   default
-color listnormal_unread										yellow    default
-color listfocus         									black	    yellow
-color listfocus_unread  									black     yellow
-color info              									default   black
-color article           									default   default
-highlight article "^(Title):.*$" 					blue 			default
-highlight article "https?://[^ ]+" 				red 			default
-highlight article "\\[image\\ [0-9]+\\]" 	green 		default
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  homogeneous_tabbar = False
+  inactive_color_offset = 1.0
+  scroll_tabbar = True
+  tab_position = hidden
+  title_hide_sizetext = True
+  window_state = fullscreen
+[keybindings]
+  copy = <Primary>c
+  hide_window = XF86Launch1
+  paste = <Primary>v
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    allow_bold = False
+    background_color = "#121212"
+    background_image = None
+    font = D2Coding for Powerline 14
+    foreground_color = "#ffffff"
+    icon_bell = False
+    palette = "#121212:#f92672:#6cc72c:#fe9720:#5f91ef:#9358fe:#36af90:#8c8c8c:#4c4c4c:#ff80f4:#a7e22e:#ffee99:#5fd9ef:#ae82fe:#66efd5:#c7cece"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+    visible_bell = True
