@@ -25,12 +25,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'dominikduda/vim_current_word'
   Plug 'shougo/neocomplete.vim'
 	Plug 'sheerun/vim-polyglot'
+	Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " solarized config
-colorscheme solarized
+colorscheme molokai
 set background=dark
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
@@ -39,7 +40,6 @@ call togglebg#map("<F5>")
 
 " general config
 set backspace=indent,eol,start
-"set termguicolors
 set laststatus=2
 set noshowmode
 set showtabline=2
@@ -142,7 +142,7 @@ endfunction
 " binding for FuzzyBufferSelect
 command! -nargs=1 B :call FuzzyBufferSelect("<args>")
 
-let g:airline_theme='base16_google'
+let g:airline_theme='monokai'
 
 " instant markdown config
 " let g:instant_markdown_slow = 1

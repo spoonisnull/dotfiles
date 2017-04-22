@@ -7,7 +7,7 @@ export TERM="xterm-256color"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -83,15 +83,29 @@ export VIMRUNTIME=/usr/share/vim/vim80
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -a' svim='sudo vim'
 
- #launch tmux
-if [ "$TMUX" = "" ]; then tmux -2; fi
-. ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+# launch tmux
+#if [ "$TMUX" = "" ]; then tmux -2; fi
+
+# launch powerline
+#. ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
 
 source  ~/Applications/powerlevel9k/powerlevel9k.zsh-theme
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable rbenv vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs root_indicator vi_mode)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="↳ "
+
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='blue'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='yellow'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='red'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
+
+# POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="141"
+# POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="000000"
+# POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="red"
+# POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="black"
