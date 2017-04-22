@@ -7,7 +7,7 @@ cp ~/.vimrc ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/config ~/Dropbox/dotfiles/ &&
 cp ~/.tmux.conf ~/Dropbox/dotfiles/ &&
-cp ~/.config/terminator/config ~/Dropbox/dotfiles/ &&
+cp ~/.config/terminator/config ~/Dropbox/dotfiles/terminator_config &&
 
 # add, commit & push all files
 cd ~/Dropbox/dotfiles &&

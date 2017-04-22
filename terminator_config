@@ -1,0 +1,35 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  homogeneous_tabbar = False
+  inactive_color_offset = 1.0
+  scroll_tabbar = True
+  tab_position = hidden
+  title_hide_sizetext = True
+  window_state = fullscreen
+[keybindings]
+  copy = <Primary>c
+  hide_window = XF86Launch1
+  paste = <Primary>v
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    allow_bold = False
+    background_color = "#121212"
+    background_image = None
+    font = D2Coding for Powerline 14
+    foreground_color = "#ffffff"
+    icon_bell = False
+    palette = "#121212:#f92672:#6cc72c:#fe9720:#5f91ef:#9358fe:#36af90:#8c8c8c:#4c4c4c:#ff80f4:#a7e22e:#ffee99:#5fd9ef:#ae82fe:#66efd5:#c7cece"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+    visible_bell = True
