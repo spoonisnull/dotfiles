@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, ubuntu)
+plugins=(git, ubuntu, vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,10 +91,48 @@ alias ll='ls -a' svim='sudo vim' cd..='cd ..'
 # launch powerline
 #. ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
 
+bindkey -v
+export KEYTIMEOUT=1
+
+function zle-line-init {
+  powerlevel9k_prepare_prompts
+  if (( ${+terminfo[smkx]} )); then
+    printf '%s' ${terminfo[smkx]}
+  fi
+  zle reset-prompt
+  zle -R
+}
+
+function zle-line-finish {
+  powerlevel9k_prepare_prompts
+  if (( ${+terminfo[rmkx]} )); then
+    printf '%s' ${terminfo[rmkx]}
+  fi
+  zle reset-prompt
+  zle -R
+}
+
+function zle-keymap-select {
+  powerlevel9k_prepare_prompts
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-line-init
+zle -N ale-line-finish
+zle -N zle-keymap-select
+
 source  ~/Applications/powerlevel9k/powerlevel9k.zsh-theme
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs root_indicator vi_mode)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+POWERLEVEL9K_VI_INSERT_MODE_STRING="INSERT"
+POWERLEVEL9K_VI_COMMAND_MODE_STRING="NORMAL"
+
+POWERLEVEL9K_VI_MODE_FOREGROUND="141"
+POWERLEVEL9K_VI_MODE_BACKGROUND="black"
+
 # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 # POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="↳ "
 
