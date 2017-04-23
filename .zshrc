@@ -83,7 +83,7 @@ export VIMRUNTIME=/usr/share/vim/vim80
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias ll='ls -a' svim='sudo vim'
+alias ll='ls -a' svim='sudo vim' cd..='cd ..'
 
 # launch tmux
 #if [ "$TMUX" = "" ]; then tmux -2; fi
