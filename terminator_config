@@ -23,10 +23,11 @@
     allow_bold = False
     background_color = "#121212"
     background_image = None
+    cursor_color = "#f6f7ec"
     font = Knack Nerd Font 12
-    foreground_color = "#ffffff"
+    foreground_color = "#c4c5b5"
     icon_bell = False
-    palette = "#121212:#f92672:#6cc72c:#fe9720:#5f91ef:#9358fe:#36af90:#8c8c8c:#4c4c4c:#ff80f4:#a7e22e:#ffee99:#5fd9ef:#ae82fe:#66efd5:#c7cece"
+    palette = "#1a1a1a:#f4005f:#98e024:#fa8419:#9d65ff:#f4005f:#58d1eb:#c4c5b5:#625e4c:#f4005f:#98e024:#e0d561:#9d65ff:#f4005f:#58d1eb:#f6f6ef"
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False

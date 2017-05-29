@@ -30,13 +30,8 @@ call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-" solarized config
-colorscheme molokai
 set background=dark
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-let g:Powerline_symbols = 'fancy'
-call togglebg#map("<F5>")
+colorscheme molokai
 
 " general config
 set backspace=indent,eol,start
@@ -66,7 +61,7 @@ set nocompatible
 set t_Co=256
 set tabstop=2
 set path+=**
-set cursorline
+"set cursorline
 
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200

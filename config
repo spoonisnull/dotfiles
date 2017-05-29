@@ -21,9 +21,9 @@ ignore-mode "display"
 # colorscheme
 color background        									default   default
 color listnormal        									default   default
-color listnormal_unread										yellow    default
-color listfocus         									black	    yellow
-color listfocus_unread  									black     yellow
+color listnormal_unread										default   default
+color listfocus         									default   default
+color listfocus_unread  									default   default
 color info              									default   black
 color article           									default   default
 highlight article "^(Title):.*$" 					blue 			default
