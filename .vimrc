@@ -26,12 +26,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'shougo/neocomplete.vim'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'flazz/vim-colorschemes'
+	Plug 'chriskempson/base16-vim'
 call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-
+let base16colorspace=256
 set background=dark
-colorscheme molokai
+colorscheme base16-google-dark
 
 " general config
 set backspace=indent,eol,start
@@ -137,7 +138,7 @@ endfunction
 " binding for FuzzyBufferSelect
 command! -nargs=1 B :call FuzzyBufferSelect("<args>")
 
-let g:airline_theme='monokai'
+let g:airline_theme='base16_google'
 
 " instant markdown config
 " let g:instant_markdown_slow = 1
