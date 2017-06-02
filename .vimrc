@@ -1,4 +1,3 @@
-
 " enable syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
   syntax enable " Enable syntax highlighting
@@ -63,11 +62,9 @@ set t_Co=256
 set tabstop=2
 set path+=**
 "set cursorline
-
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 filetype plugin indent on
-syntax enable
 
 " move lines mapping on Ctrl+hjkl
 nnoremap <C-j> :m .+1<CR>==
@@ -93,6 +90,9 @@ map <C-o> :NERDTreeTabsToggle<CR>
 " powerline config
 set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 
+" airline config
+let g:airline_theme='base16_shell'
+
 " airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -107,39 +107,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename, not the whole path
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" buffer selector function
-function! FuzzyBufferSelect(pattern)
-	let buffercount = bufnr("$")
-	let currentbuffernumber = 1
-	let numberofmatches = 0
-	let firsmatchingbuffernumber = 0
-	while currentbuffernumber <= buffercount
-		if(bufexists(currentbuffernumber))
-			let currentbuffername = bufname(currentbuffernumber)
-			if(match(currentbuffername, a:pattern) > -1)
-				echo currentbuffernumber . ": ". bufname(currentbuffernumber)
-				let numberofmatches += 1
-				let firstmatchingbuffernumber = currentbuffernumber
-			endif
-		endif
-		let currentbuffernumber = currentbuffernumber + 1
-	endwhile
-	if(numberofmatches == 1)
-		execute ":buffer ". firstmatchingbuffernumber
-	elseif(numberofmatches > 1)
-		let desiredbuffernumber = input("Enter buffer number: ")
-		if(strlen(desiredbuffernumber) != 0)
-			execute ":buffer ". desiredbuffernumber
-		endif
-	else
-		echo "No matching buffers."
-	endif
-endfunction
+" Disable whitespace detection
+let g:airline#extensions#whitespace#enabled = 0
 
-" binding for FuzzyBufferSelect
-command! -nargs=1 B :call FuzzyBufferSelect("<args>")
-
-let g:airline_theme='base16_shell'
+" Remove colour highlighting on section_z
+let g:airline_section_warning = ''
+let g:airline_section_error = ''
 
 " instant markdown config
 " let g:instant_markdown_slow = 1
@@ -200,4 +173,35 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" Fuzzy buffer selector function
+function! FuzzyBufferSelect(pattern)
+	let buffercount = bufnr("$")
+	let currentbuffernumber = 1
+	let numberofmatches = 0
+	let firsmatchingbuffernumber = 0
+	while currentbuffernumber <= buffercount
+		if(bufexists(currentbuffernumber))
+			let currentbuffername = bufname(currentbuffernumber)
+			if(match(currentbuffername, a:pattern) > -1)
+				echo currentbuffernumber . ": ". bufname(currentbuffernumber)
+				let numberofmatches += 1
+				let firstmatchingbuffernumber = currentbuffernumber
+			endif
+		endif
+		let currentbuffernumber = currentbuffernumber + 1
+	endwhile
+	if(numberofmatches == 1)
+		execute ":buffer ". firstmatchingbuffernumber
+	elseif(numberofmatches > 1)
+		let desiredbuffernumber = input("Enter buffer number: ")
+		if(strlen(desiredbuffernumber) != 0)
+			execute ":buffer ". desiredbuffernumber
+		endif
+	else
+		echo "No matching buffers."
+	endif
+endfunction
+
+" binding for FuzzyBufferSelect
+command! -nargs=1 B :call FuzzyBufferSelect("<args>")
 
