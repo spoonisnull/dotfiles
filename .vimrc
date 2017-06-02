@@ -30,9 +30,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
 let base16colorspace=256
-set background=dark
-colorscheme base16-google-dark
+colorscheme base16-default-dark
 
 " general config
 set backspace=indent,eol,start
@@ -100,10 +100,11 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols = get(g:,'airline_symbols',{})
 let g:airline_symbols.linenr = ''
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
 
-" Show just the filename
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1 
+
+" Show just the filename, not the whole path
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " buffer selector function
@@ -138,7 +139,7 @@ endfunction
 " binding for FuzzyBufferSelect
 command! -nargs=1 B :call FuzzyBufferSelect("<args>")
 
-let g:airline_theme='base16_google'
+let g:airline_theme='base16_shell'
 
 " instant markdown config
 " let g:instant_markdown_slow = 1
