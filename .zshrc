@@ -29,7 +29,8 @@ HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
+unsetopt correct_all
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -87,7 +88,7 @@ base16_3024
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias ll='ls -a' svim='sudo vim' cd..='cd ..'
+alias ll='ls -a' svim='sudo vim' cd..='cd ..' toclip='xclip -selection c'
 
 # launch tmux
 #if [ "$TMUX" = "" ]; then tmux -2; fi

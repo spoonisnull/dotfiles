@@ -66,6 +66,9 @@ set path+=**
 set notimeout ttimeout ttimeoutlen=200
 filetype plugin indent on
 
+" format json
+nnoremap <C-f> :%!python -m json.tool
+
 " move lines mapping on Ctrl+hjkl
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
