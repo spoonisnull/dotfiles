@@ -1,6 +1,6 @@
 " enable syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
-  syntax enable " Enable syntax highlighting
+  syntax enable
 endif
 
 " install missing plugins
@@ -30,8 +30,10 @@ call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-let base16colorspace=256
-colorscheme base16-default-dark
+syntax enable
+set background=dark
+colorscheme solarized
+let g:airline_solarized_bg='dark'
 
 " general config
 set backspace=indent,eol,start
@@ -94,7 +96,7 @@ map <C-o> :NERDTreeTabsToggle<CR>
 set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 
 " airline config
-let g:airline_theme='base16_shell'
+let g:airline_theme='solarized'
 
 " airline symbols
 let g:airline_left_sep = ''
