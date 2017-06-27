@@ -4,11 +4,6 @@
 export ZSH=/home/zsolt/.oh-my-zsh
 export TERM="xterm-256color"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -45,110 +40,42 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git ubuntu vi-mode)
+
+export VIMRUNTIME=/usr/local/share/vim/vim80/
+
+alias ll='ls -a' svim='sudo vim' cd..='cd ..' toclip='xclip -selection c' tmux='tmux -2'
+
+if [ "$TMUX" = "" ]; then tmux -2; fi
+
+bindkey -v
+
+export KEYTIMEOUT=1
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-
-export VIMRUNTIME=/usr/share/vim/vim80
-
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-base16_3024
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias ll='ls -a' svim='sudo vim' cd..='cd ..' toclip='xclip -selection c'
-
-# launch tmux
-#if [ "$TMUX" = "" ]; then tmux -2; fi
-
-# launch powerline
-#. ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
-
-bindkey -v
-export KEYTIMEOUT=1
-
-function zle-line-init {
-  powerlevel9k_prepare_prompts
-  if (( ${+terminfo[smkx]} )); then
-    printf '%s' ${terminfo[smkx]}
-  fi
-  zle reset-prompt
-  zle -R
-}
-
-function zle-line-finish {
-  powerlevel9k_prepare_prompts
-  if (( ${+terminfo[rmkx]} )); then
-    printf '%s' ${terminfo[rmkx]}
-  fi
-  zle reset-prompt
-  zle -R
-}
-
-function zle-keymap-select {
-  powerlevel9k_prepare_prompts
-  zle reset-prompt
-  zle -R
-}
-
-zle -N zle-line-init
-zle -N ale-line-finish
-zle -N zle-keymap-select
-
-source  ~/Applications/powerlevel9k/powerlevel9k.zsh-theme
-
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs root_indicator vi_mode)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+
+# solarized colorchemed powerlevel9k config
+
 POWERLEVEL9K_VI_INSERT_MODE_STRING="INSERT"
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="NORMAL"
 
-POWERLEVEL9K_VI_MODE_FOREGROUND="141"
-POWERLEVEL9K_VI_MODE_BACKGROUND="black"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_BACKGROUND="245"
 
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="↳ "
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="245"
 
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='blue'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='yellow'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='red'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="245"
 
-# POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="141"
-# POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="000000"
-# POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="red"
-# POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="black"
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND="white"
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND="cyan"
+
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="white"
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="red"
+
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="white"
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="yellow"
