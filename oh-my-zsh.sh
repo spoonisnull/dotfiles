@@ -93,7 +93,6 @@ done
 unset config_file
 
 # Load the theme
-ZSH_THEME="powerlevel9k/powerlevel9k"
 if [ "$ZSH_THEME" = "random" ]; then
   themes=($ZSH/themes/*zsh-theme)
   N=${#themes[@]}
@@ -111,8 +110,4 @@ else
       source "$ZSH/themes/$ZSH_THEME.zsh-theme"
     fi
   fi
-fi
-
-if [[ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]]; then
-  source /usr/share/powerline/bindings/zsh/powerline.zsh
 fi

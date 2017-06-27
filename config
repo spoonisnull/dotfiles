@@ -19,13 +19,13 @@ bind-key k up article
 ignore-mode "display"
 
 # colorscheme
-color background   default   default
-color listnormal   default   default
-color listfocus    black     yellow
-color info         default   black
-color article      default   default
-
-# highlights
-highlight article "^(Title):.*$" blue default
-highlight article "https?://[^ ]+" red default
-highlight article "\\[image\\ [0-9]+\\]" green default
+color background        									default   default
+color listnormal        									default   default
+color listnormal_unread										default   default
+color listfocus         									default   default
+color listfocus_unread  									default   default
+color info              									default   black
+color article           									default   default
+highlight article "^(Title):.*$" 					blue 			default
+highlight article "https?://[^ ]+" 				red 			default
+highlight article "\\[image\\ [0-9]+\\]" 	green 		default
