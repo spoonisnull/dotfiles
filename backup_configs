@@ -1,12 +1,13 @@
 # update all config files in dropbox
 cp /bin/backup_configs ~/Dropbox/dotfiles/ &&
+cp /bin/overwrite_configs ~/Dropbox/dotfiles/ &&
 cp ~/.bashrc ~/Dropbox/dotfiles/ &&
 cp ~/.zshrc ~/Dropbox/dotfiles/ &&
 cp ~/.tmux.conf ~/Dropbox/dotfiles/ &&
 cp ~/.vimrc ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/config ~/Dropbox/dotfiles/ &&
-cp ~/.tmux.conf ~/Dropbox/dotfiles/ &&
+cp ~/.oh-my-zsh/oh-my-zsh.sh ~/Dropbox/dotfiles/ &&
 
 # add, commit & push all files
 cd ~/Dropbox/dotfiles &&

@@ -1,0 +1,7 @@
+cp ~Dropbox/dotfiles/.bashrc ~/.bashrc
+cp ~Dropbox/dotfiles/.zshrc ~/.zshrc
+cp ~Dropbox/dotfiles/.tmux.conf ~/.tmux.conf
+cp ~Dropbox/dotfiles/.vimrc ~/.vimrc
+cp ~Dropbox/dotfiles/urls ~/.newsbeuter/urls
+cp ~Dropbox/dotfiles/config ~/.newsbeuter/config
+cp ~Dropbox/dotfiles/oh-my-zsh.sh ~/.oh-my-zsh/oh-my-zsh.sh
