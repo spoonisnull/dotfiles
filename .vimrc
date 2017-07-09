@@ -1,7 +1,4 @@
-" enable syntax highlighting
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-endif
+syntax enable
 
 " install missing plugins
 call plug#begin('~/.vim/plugged')
@@ -31,6 +28,11 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 set background=dark
 colorscheme solarized
+
+"let g:solarized_termcolors=256
+
+" airline config
+let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
 " general config
@@ -93,8 +95,6 @@ map <C-o> :NERDTreeTabsToggle<CR>
 " powerline config
 set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 
-" airline config
-let g:airline_theme='solarized'
 
 " airline symbols
 let g:airline_left_sep = ''
