@@ -6,7 +6,7 @@ DISABLE_AUTO_TITLE="true"
 unsetopt correct_all
 COMPLETION_WAITING_DOTS="true"
 plugins=(git ubuntu vi-mode)
-export VIMRUNTIME=/usr/local/share/vim/vim80/
+export VIMRUNTIME=/usr/share/vim/vim74/
 alias ll='ls -a' svim='sudo vim' cd..='cd ..' toclip='xclip -selection c' tmux='tmux -2' backup='backup_configs'
 
 if [ "$TMUX" = "" ]; then tmux -2; fi
