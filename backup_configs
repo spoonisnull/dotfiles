@@ -9,7 +9,7 @@ cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/config ~/Dropbox/dotfiles/ &&
 cp ~/.oh-my-zsh/oh-my-zsh.sh ~/Dropbox/dotfiles/ &&
 
-if [ "$HOSTNAME" = kraken ]; then
+if [ "$HOSTNAME" = "kraken" ]; then
     cp ~/.config/terminator/config ~/Dropbox/dotfiles/k_terminator_config
 else
     cp ~/.config/terminator/config ~/Dropbox/dotfiles/t_terminator_config
