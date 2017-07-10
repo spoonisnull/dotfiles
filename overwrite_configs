@@ -5,3 +5,9 @@ cp ~/Dropbox/dotfiles/.vimrc ~/.vimrc
 cp ~/Dropbox/dotfiles/urls ~/.newsbeuter/urls
 cp ~/Dropbox/dotfiles/config ~/.newsbeuter/config
 cp ~/Dropbox/dotfiles/oh-my-zsh.sh ~/.oh-my-zsh/oh-my-zsh.sh
+
+if [ `hostname` = "kraken" ]; then
+    cp ~/Dropbox/dotfiles/k_terminator_config ~./config/terminator/config
+else
+    cp ~/Dropbox/dotgiles/t_terminator_config ~./config/terminator/config
+fi
