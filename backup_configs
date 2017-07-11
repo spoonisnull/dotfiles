@@ -9,6 +9,7 @@ cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/config ~/Dropbox/dotfiles/ &&
 cp ~/.oh-my-zsh/oh-my-zsh.sh ~/Dropbox/dotfiles/ &&
 
+# same config files and script shared between 2 systems: terminator config stored separately
 if [ `hostname` = "kraken" ]; then
     cp ~/.config/terminator/config ~/Dropbox/dotfiles/k_terminator_config
 else
