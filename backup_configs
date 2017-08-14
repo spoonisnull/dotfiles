@@ -8,6 +8,8 @@ cp ~/.vimrc ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/urls ~/Dropbox/dotfiles/ &&
 cp ~/.newsbeuter/config ~/Dropbox/dotfiles/ &&
 cp ~/.oh-my-zsh/oh-my-zsh.sh ~/Dropbox/dotfiles/ &&
+cp ~/.config/htop/htoprc ~/Dropbox/dotfiles/ &&
+
 
 # same config files and script shared between 2 systems: terminator config stored separately
 if [ `hostname` = "kraken" ]; then
