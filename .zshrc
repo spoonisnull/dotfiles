@@ -1,5 +1,5 @@
 export ZSH=/home/zsolt/.oh-my-zsh
-export TERM="xterm-256color"
+export TERM="st-256color"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"

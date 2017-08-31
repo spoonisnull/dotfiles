@@ -27,13 +27,15 @@ call plug#end()
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 set background=dark
-colorscheme solarized
+"colorscheme base
 
 "let g:solarized_termcolors=256
-
 " airline config
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
+let g:airline_theme = 'base16_default'
+
 let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts=1
 
 " general config
 set backspace=indent,eol,start
