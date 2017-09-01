@@ -18,7 +18,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'myhere/vim-nodejs-complete'
 	Plug 'othree/html5.vim'
-	Plug 'dominikduda/vim_current_word'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'flazz/vim-colorschemes'
 	Plug 'chriskempson/base16-vim'
@@ -27,11 +26,8 @@ call plug#end()
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 set background=dark
-"colorscheme base
 
-"let g:solarized_termcolors=256
 " airline config
-"let g:airline_theme='solarized'
 let g:airline_theme = 'base16_default'
 
 let g:airline_solarized_bg='dark'
