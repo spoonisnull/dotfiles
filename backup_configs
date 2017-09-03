@@ -21,7 +21,7 @@ fi
 
 # add, commit & push all files
 cd ~/Dropbox/dotfiles &&
-if [[ ! -a *.swp ]]; then
+if [[ ! -f *.swp ]]; then
 				exit 0;
 else 
 				rm *.swp
