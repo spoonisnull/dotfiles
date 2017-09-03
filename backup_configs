@@ -14,13 +14,18 @@ cp ~/.ncmpcpp/config ~/Dropbox/dotfiles/ncmpcpp_config &&
 
 # same config files and script shared between 2 systems: terminator config stored separately
 if [ `hostname` = "kraken" ]; then
-    cp ~/.config/terminator/config ~/Dropbox/dotfiles/k_terminator_config
+				cp ~/.config/terminator/config ~/Dropbox/dotfiles/k_terminator_config
 else
-    cp ~/.config/terminator/config ~/Dropbox/dotfiles/t_terminator_config
+				cp ~/.config/terminator/config ~/Dropbox/dotfiles/t_terminator_config
 fi
 
 # add, commit & push all files
 cd ~/Dropbox/dotfiles &&
+if [[ ! -a *.swp ]]; then
+				exit 1;
+else 
+				rm *.swp
+fi
 git add -A &&
 git commit -am "updated config/dotfiles" &&
 git push
