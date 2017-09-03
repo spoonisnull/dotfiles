@@ -11,12 +11,15 @@ visualizer_in_stereo = "no"
 visualizer_type = "spectrum"
 visualizer_look = "▇▇"
 
-
-progressbar_look = "▃▃▃"
+" general config
+progressbar_look = "███"
 playlist_display_mode = "columns"
-browser_display_mode = "columns"
+browser_display_mode = "classic"
 autocenter_mode = "yes"
-user_interface = "alternative"
+user_interface = "classic"
 header_text_scrolling = "yes"
 ignore_leading_the = "yes"
 external_editor = "vim"
+display_volume_level = no
+playlist_disable_highlight_delay = 0
+execute_on_song_change = "mpd_current"
