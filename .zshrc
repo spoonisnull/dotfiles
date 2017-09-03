@@ -17,8 +17,6 @@ source $ZSH/oh-my-zsh.sh
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs root_indicator vi_mode)
 
-# solarized colorschemed powerlevel9k config
-
 POWERLEVEL9K_VI_INSERT_MODE_STRING="INSERT"
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="NORMAL"
 

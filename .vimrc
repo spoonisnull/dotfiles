@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'edkolev/tmuxline.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-	Plug 'altercation/vim-colors-solarized'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-sensible'
@@ -20,7 +19,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'othree/html5.vim'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'flazz/vim-colorschemes'
-	Plug 'chriskempson/base16-vim'
 call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -28,7 +26,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 set background=dark
 
 " airline config
-let g:airline_theme = 'base16_default'
+let g:airline_theme = 'base16_google'
 
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts=1
@@ -64,7 +62,10 @@ set path+=**
 "set cursorline
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
-filetype plugin indent on
+filetype plugin on
+
+" leader config
+let mapleader=" "
 
 " format json
 nnoremap <C-f> :%!python -m json.tool
@@ -116,7 +117,7 @@ let g:airline_section_warning = ''
 let g:airline_section_error = ''
 
 " instant markdown config
-" let g:instant_markdown_slow = 1
+let g:instant_markdown_slow = 1
 
 " tmuxline config
 let g:tmuxline_preset = {
