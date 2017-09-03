@@ -135,6 +135,7 @@ let g:tmuxline_preset = {
       \'win'  : '#I #W',
       \'cwin' : '#I #W',
 			\'z'    : '%R'}
+let g:tmuxline_powerline_separators = 0
 
 " Fuzzy buffer selector function
 function! FuzzyBufferSelect(pattern)
