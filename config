@@ -1,18 +1,31 @@
-mpd_host = 127.0.0.1
-mpd_port = 6600
-mpd_music_dir = "/home/zsolt/Music"
-visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_output_name = "my_fifo"
-visualizer_sync_interval = "10" 
-visualizer_in_stereo = "yes"
-visualizer_type = "spectrum"
-visualizer_look = "▇▇"
-progressbar_look = "▃▃▃"
-playlist_display_mode = "columns"
-browser_display_mode = "columns"
-autocenter_mode = "yes"
-user_interface = "alternative"
-header_text_scrolling = "yes"
-ignore_leading_the = "yes"
-external_editor = "vim"
+# newsbeuter rss reader config
+auto-reload yes
+browser google-chrome
+cleanup-on-quit yes
+feed-sort-order title-dec
+refresh-on-startup yes
+reload-time 20
+reload-threads 2
+show-read-articles yes
+show-read-feeds yes
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down article
+bind-key k up article
+ignore-mode "display"
 
+# colorscheme
+color background   default   default
+color listnormal   default   default
+color listfocus    black     yellow
+color info         default   black
+color article      default   default
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default
