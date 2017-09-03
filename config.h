@@ -54,7 +54,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 1;
+static unsigned int cursorthickness = 2;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -84,22 +84,22 @@ static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  "#282a2e", /* base01 */
-  "#cc342b", /* base08 */
-  "#198844", /* base0B */
-  "#fba922", /* base0A */
-  "#3971ed", /* base0D */
-  "#3971ed", /* base0F */
-  "#3971ed", /* base0C */
-  "#e0e0e0", /* base06 */
-  "#1d1f21", /* base00 */
-  "#f96a38", /* base09 */
-  "#373b41", /* base02 */
-  "#969896", /* base03 */
-  "#b4b7b4", /* base04 */
-  "#a36ac7", /* base0E */
-  "#c5c8c6", /* base05 */
-  "#ffffff", /* base07 */
+  "#393939", /* base01 */
+  "#f2777a", /* base08 */
+  "#99cc99", /* base0B */
+  "#ffcc66", /* base0A */
+  "#6699cc", /* base0D */
+  "#d27b53", /* base0F */
+  "#66cccc", /* base0C */
+  "#e8e6df", /* base06 */
+  "#2d2d2d", /* base00 */
+  "#f99157", /* base09 */
+  "#515151", /* base02 */
+  "#747369", /* base03 */
+  "#a09f93", /* base04 */
+  "#cc99cc", /* base0E */
+  "#d3d0c8", /* base05 */
+  "#f2f0ec", /* base07 */
 };
 
 /*
@@ -111,6 +111,7 @@ static unsigned int defaultfg = 12;
 static unsigned int defaultbg = 8;
 static unsigned int defaultcs = 14;
 static unsigned int defaultrcs = 15;
+
 /*
  * Default shape of cursor
  * 2: Block ("█")

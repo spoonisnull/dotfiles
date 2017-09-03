@@ -23,15 +23,8 @@ call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-set background=dark
-
-" airline config
-let g:airline_theme = 'base16_google'
-
-let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts=1
-
 " general config
+set background=dark
 set backspace=indent,eol,start
 set laststatus=2
 set noshowmode
@@ -59,7 +52,17 @@ set nocompatible
 set t_Co=256
 set tabstop=2
 set path+=**
-"set cursorline
+
+" set horizontal line highlighting
+set cursorline
+hi CursorLine none
+hi CursorLine ctermbg=black ctermfg=none
+hi LineNr ctermbg=black ctermfg=darkred
+
+" set vertical line highlighting
+"set cursorcolum
+"hi CursorColumn ctermbg=black ctermfg=none
+
 " quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 filetype plugin on
@@ -92,14 +95,21 @@ autocmd StdinReadPre * let s:std_in=1
 map <C-o> :NERDTreeTabsToggle<CR>
 
 " powerline config
-set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
+"set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 
+" airline config
+let g:airline_theme = 'base16_eighties'
+let g:airline_powerline_fonts=1
 
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+" airline symbols - classic or no symbols
+"let g:airline_left_sep = ''
+let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+let g:airline_right_alt_sep = ''
 let g:airline_symbols = get(g:,'airline_symbols',{})
 let g:airline_symbols.linenr = ''
 
