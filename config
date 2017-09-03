@@ -19,11 +19,10 @@ bind-key k up article
 ignore-mode "display"
 
 # colorscheme
-color background   default   default
-color listnormal   default   default
-color listfocus    black     yellow
-color info         default   black
-color article      default   default
+color info green black reverse
+color listnormal_unread yellow default
+color listfocus red default reverse bold
+color listfocus_unread red default reverse bold
 
 # highlights
 highlight article "^(Title):.*$" blue default
