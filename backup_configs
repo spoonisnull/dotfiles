@@ -21,9 +21,7 @@ fi
 
 # add, commit & push all files
 cd ~/Dropbox/dotfiles &&
-if [ ! -f *.swp ]; then
-				exit 0;
-else 
+if [ -f *.swp ]; then 
 				rm *.swp
 fi
 git add -A &&
