@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Inconsolata for Powerline:pixelsize=16:antialias=false:autohint=false";
+static char font[] = "Input Mono:style=Medium:pixelsize=14:antialias=false:autohint=false";
 static int borderpx = 0;
 
 /*

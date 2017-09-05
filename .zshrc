@@ -1,5 +1,5 @@
 export ZSH=/home/zsolt/.oh-my-zsh
-export TERM="st-256color"
+export TERM="tmux-256color"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
