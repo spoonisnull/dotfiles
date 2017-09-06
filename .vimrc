@@ -68,7 +68,17 @@ set notimeout ttimeout ttimeoutlen=200
 filetype plugin on
 
 " leader config
-let mapleader=" "
+let mapleader = " "
+nmap <leader>n :tabnew<Enter>
+nmap <leader>l :tabnext<Enter>
+nmap <leader>h :tabprev<Enter>
+
+
+" movement config
+nnoremap j gj
+nnoremap k gk
+inoremap jj <esc>
+inoremap jk <esc>
 
 " format json
 nnoremap <C-f> :%!python -m json.tool
