@@ -41,7 +41,6 @@ set autoindent
 set smartindent
 set noerrorbells
 set visualbell
-set mouse=a
 set lazyredraw
 set showmatch
 set foldenable
@@ -60,7 +59,7 @@ hi CursorLine ctermbg=black ctermfg=none
 hi LineNr ctermbg=black ctermfg=darkred
 
 " set vertical line highlighting
-"set cursorcolum
+"set cursorcolumn
 "hi CursorColumn ctermbg=black ctermfg=none
 
 " quickly time out on keycodes, but never time out on mappings
@@ -81,7 +80,7 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " format json
-nnoremap <C-f> :%!python -m json.tool
+nnoremap <leader><C-f> :%!python -m json.tool
 
 " move lines mapping on Ctrl+hjkl
 nnoremap <C-j> :m .+1<CR>==
