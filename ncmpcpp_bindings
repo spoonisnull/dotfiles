@@ -1,0 +1,25 @@
+" mpd config
+mpd_host = 127.0.0.1
+mpd_port = 6600
+mpd_music_dir = "/media/Storage2/"
+
+" visualization config
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_sync_interval = "30" 
+visualizer_in_stereo = "no"
+visualizer_type = "spectrum"
+visualizer_look = "▇▇"
+
+" general config
+progressbar_look = "███"
+playlist_display_mode = "columns"
+browser_display_mode = "classic"
+autocenter_mode = "yes"
+user_interface = "classic"
+header_text_scrolling = "yes"
+ignore_leading_the = "yes"
+external_editor = "vim"
+display_volume_level = no
+playlist_disable_highlight_delay = 0
+execute_on_song_change = "mpd_current"
