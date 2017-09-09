@@ -2,23 +2,23 @@ syntax enable
 
 " install missing plugins
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-  Plug 'myusuf3/numbers.vim'
-  Plug 'Lokaltog/vim-powerline'
-  Plug 'vim-syntastic/syntastic'
   Plug 'edkolev/tmuxline.vim'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'flazz/vim-colorschemes'
+  Plug 'jistr/vim-nerdtree-tabs'
+  Plug 'lokaltog/vim-powerline'
+  Plug 'myhere/vim-nodejs-complete'
+  Plug 'myusuf3/numbers.vim'
+  Plug 'othree/html5.vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'suan/vim-instant-markdown'
+  Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-sensible'
-  Plug 'suan/vim-instant-markdown'
-  Plug 'terryma/vim-multiple-cursors'
-  Plug 'jistr/vim-nerdtree-tabs'
-  Plug 'myhere/vim-nodejs-complete'
-  Plug 'othree/html5.vim'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'flazz/vim-colorschemes'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags

@@ -15,7 +15,6 @@ alias tmux='tmux -2'
 alias backup='backup_configs'
 alias goo='googler'
 
-if [ "$TMUX" = "" ]; then tmux -2; fi
 bindkey -v
 export KEYTIMEOUT=1
 source $ZSH/oh-my-zsh.sh
