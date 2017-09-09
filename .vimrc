@@ -82,12 +82,6 @@ nmap <leader>h :tabprev<Enter>
 nnoremap j gj
 nnoremap k gk
 
-" leave insert when moving
-inoremap jj <esc>
-inoremap kk <esc>
-inoremap hh <esc>
-inoremap ll <esc>
-
 " format json
 nnoremap <leader><C-f> :%!python -m json.tool
 
