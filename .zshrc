@@ -7,7 +7,13 @@ unsetopt correct_all
 COMPLETION_WAITING_DOTS="true"
 plugins=(git ubuntu vi-mode)
 export VIMRUNTIME=/usr/share/vim/vim74/
-alias ll='ls -a' svim='sudo vim' cd..='cd ..' toclip='xclip -selection c' tmux='tmux -2' backup='backup_configs'
+alias ll='ls -a'
+alias svim='sudo vim'
+alias cd..='cd ..'
+alias toclip='xclip -selection c'
+alias tmux='tmux -2'
+alias backup='backup_configs'
+alias goo='googler'
 
 if [ "$TMUX" = "" ]; then tmux -2; fi
 bindkey -v
