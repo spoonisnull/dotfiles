@@ -101,7 +101,7 @@ let g:syntastic_check_on_wq = 0
 
 " nerd tree config
 autocmd StdinReadPre * let s:std_in=1
-map <C-o> :NERDTreeTabsToggle<CR>
+nnoremap <leader>o :NERDTreeTabsToggle<CR>
 
 " powerline config
 "set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
