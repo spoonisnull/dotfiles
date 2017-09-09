@@ -49,7 +49,11 @@ set autoread
 set hidden
 set nocompatible
 set t_Co=256
-set tabstop=2
+set tabstop=8
+set softtabstop=0
+set expandtab
+set shiftwidth=4
+set smarttab
 set path+=**
 
 " set horizontal line highlighting
@@ -74,10 +78,15 @@ nmap <leader>h :tabprev<Enter>
 
 
 " movement config
+" one line up/down regardless of wrapping
 nnoremap j gj
 nnoremap k gk
+
+" leave insert when moving
 inoremap jj <esc>
-inoremap jk <esc>
+inoremap kk <esc>
+inoremap hh <esc>
+inoremap ll <esc>
 
 " format json
 nnoremap <leader><C-f> :%!python -m json.tool
