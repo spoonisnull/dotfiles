@@ -18,7 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'vim-syntastic/syntastic'
-Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdtree'
 call plug#end()
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -55,6 +55,9 @@ set t_Co=256
 set tabstop=2
 set visualbell
 set wildmenu
+
+" share system clipboard and unnamed reg
+set clipboard=unnamedplus
 
 " set horizontal line highlighting
 set cursorline
