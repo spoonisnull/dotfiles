@@ -159,7 +159,7 @@ let g:tmuxline_preset = {
 let g:tmuxline_powerline_separators = 0
 
 " Fuzzy buffer selector function
-function! FuzzyBufferSelect(pattern)
+function! FuzzyBufferSelect(pattern) abort
   let buffercount = bufnr("$")
   let currentbuffernumber = 1
   let numberofmatches = 0
