@@ -1,4 +1,6 @@
-syntax enable
+if !exists("g:syntax_on")
+  syntax enable
+endif
 
 " install missing plugins
 call plug#begin('~/.vim/plugged')
@@ -38,7 +40,9 @@ set ignorecase
 set incsearch
 set laststatus=2
 set lazyredraw
-set nocompatible
+if &compatible
+  set nocompatible
+endif
 set noerrorbells
 set noshowmode
 set number
@@ -52,7 +56,7 @@ set smartindent
 set smarttab
 set softtabstop=0
 set t_Co=256
-set tabstop=2
+set tabstop=8
 set visualbell
 set wildmenu
 
