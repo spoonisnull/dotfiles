@@ -12,6 +12,9 @@ cp ~/.config/htop/htoprc ~/Dropbox/dotfiles/ &&
 cp ~/Apps/st-0.7/config.h ~/Dropbox/dotfiles/ &&
 cp ~/.ncmpcpp/config ~/Dropbox/dotfiles/ncmpcpp_config &&
 cp ~/.ncmpcpp/config ~/Dropbox/dotfiles/ncmpcpp_bindings &&
+cp ~/.config/i3/config ~/Dropbox/dotfiles/i3config
+cp /etc/i3status.conf ~/Dropbox/dotfiles/i3status.conf
+cp ~/.screenlayout/i3_four_monitors.sh ~/Dropbox/dotfiles/i3_four_monitors.sh
 
 # same config files and script shared between 2 systems: terminator config stored separately
 if [ `hostname` = "kraken" ]; then
