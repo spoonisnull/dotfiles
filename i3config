@@ -132,11 +132,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# volume controls generic (media keys)
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5dB- unmute
-bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
-
 # volume controls no media keys
 bindsym $mod+Control+bracketright exec amixer -q set Master 5dB+ unmute
 bindsym $mod+Control+bracketleft exec amixer -q set Master 5dB- unmute
@@ -144,6 +139,7 @@ bindsym $mod+Control+p exec amixer -D pulse set Master 1+ toggle
 
 bindsym $mod+e exec "pcmanfm"
 bindsym Print exec "shutter -s"
+
 bindsym $mod+F1 exec "google-chrome"
 bindsym $mod+F2 exec ""
 bindsym $mod+F3 exec ""
@@ -152,18 +148,7 @@ bindsym $mod+F5 exec ""
 bindsym $mod+F6 exec ""
 bindsym $mod+F7 exec ""
 bindsym $mod+F8 exec ""
-bindsym $mod+F9 exec ""
-bindsym $mod+F10 exec ""
-bindsym $mod+F11 exec ""
-bindsym $mod+F12 exec ""
-bindsym $mod+F13 exec ""
-bindsym $mod+F14 exec ""
-bindsym $mod+F15 exec ""
-bindsym $mod+F16 exec ""
-bindsym $mod+F17 exec ""
-bindsym $mod+F18 exec ""
-bindsym $mod+F19 exec ""
-bindsym $mod+F20 exec ""
-bindsym $mod+F21 exec ""
-bindsym $mod+F22 exec ""
-bindsym $mod+F23 exec ""
+bindsym $mod+F9 exec --no-startup-id i3exit lock, mode "default"
+bindsym $mod+F10 exec --no-startup-id i3exit suspend, mode "default"
+bindsym $mod+F11 exec --no-startup-id i3exit reboot, mode "default"
+bindsym $mod+F12 exec --no-startup-id i3exit shutdown, mode "default"
