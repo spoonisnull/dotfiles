@@ -59,7 +59,8 @@ set t_Co=256
 set tabstop=8
 set visualbell
 set wildmenu
-
+" lock current line to the middle
+set scrolloff=999
 " share system clipboard and unnamed reg
 set clipboard=unnamedplus
 

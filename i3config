@@ -14,7 +14,7 @@ for_window [class=".*"] split toggle
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command ~/.i3status.sh
         tray_output primary
         output DP-1
         # hide workspace names
@@ -45,6 +45,32 @@ client.urgent           #383a3b #383a3b #ee0000 #383a3b   #383a3b
 new_window normal
 hide_edge_borders vertical 
 new_window 1pixel
+
+## Volume control
+
+# Path to volume control, without trailing slash
+set $volumepath ~/Apps/i3-volume
+
+# Command for the status line (used with -t, must also use -u)
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line (used with -u, must also use -t)
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage (used with -i, -d)
+set $volumestep 5
+
+# Symbolic name for sink (numeric index not supported) (used with -s $sinkname)
+#   Recommended: comment out this setting and omit the -s option to use default sink
+#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}' 
+#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo 
+
+bindsym XF86AudioRaiseVolume exec $volumepath/volume -i $volumestep -n -t $statuscmd -u $statussig
+bindsym XF86AudioLowerVolume exec $volumepath/volume -d $volumestep -n -t $statuscmd -u $statussig
+bindsym XF86AudioMute exec $volumepath/volume -m -n -t $statuscmd -u $statussig
 
 # autorun
 exec ~/.screenlayout/i3_four_monitors.sh
@@ -103,10 +129,10 @@ bindsym $mod+3 focus output DP-1
 bindsym $mod+4 focus output HDMI-0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to output DP-1-1
-bindsym $mod+Shift+2 move container to output DVI-D-0
-bindsym $mod+Shift+3 move container to output DP-1
-bindsym $mod+Shift+4 move container to output HDMI-0
+bindsym $mod4+1 move container to output DP-1-1
+bindsym $mod4+2 move container to output DVI-D-0
+bindsym $mod4+3 move container to output DP-1
+bindsym $mod4+4 move container to output HDMI-0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
