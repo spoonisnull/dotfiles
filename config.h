@@ -8,7 +8,7 @@
 
 /* static char font[] = "Input Mono:style=Medium:pixelsize=14:antialias=false:autohint=false"; */
 
-static char font[] = "Input Mono:style=Regular:pixelsize=13:antialias=false:autohint=false";
+static char font[] = "Liberation Mono:style=Regular:pixelsize=14:antialias=false:autohint=false";
 static int borderpx = 0;
 
 /*

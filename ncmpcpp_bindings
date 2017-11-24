@@ -1,7 +1,7 @@
 " mpd config
 mpd_host = 127.0.0.1
 mpd_port = 6600
-mpd_music_dir = "/media/Storage2/"
+mpd_music_dir = "/mnt/6088B4E988B4BEB/mp3/"
 
 " visualization config
 visualizer_fifo_path = "/tmp/mpd.fifo"
