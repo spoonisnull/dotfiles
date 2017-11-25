@@ -49,6 +49,26 @@ bindsym XF86AudioRaiseVolume exec $volumepath/volume -i $volumestep -n -t $statu
 bindsym XF86AudioLowerVolume exec $volumepath/volume -d $volumestep -n -t $statuscmd -u $statussig
 bindsym XF86AudioMute exec $volumepath/volume -m -n -t $statuscmd -u $statussig
 
+# media controls
+bindsym XF86AudioPlay exec mpcplay
+bindsym XF86AudioStop exec mpcpause
+bindsym XF86AudioPrev exec mpcprev
+bindsym XF86AudioNext exec mpcnext
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode
+
+  bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # autorun
 exec ~/.screenlayout/i3_four_monitors.sh
 exec --no-startup-id nitrogen --restore
@@ -89,39 +109,12 @@ bindsym $mod4+1 move container to output DP-1-1
 bindsym $mod4+2 move container to output DVI-D-0
 bindsym $mod4+3 move container to output DP-1
 bindsym $mod4+4 move container to output HDMI-0
-
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod4+r restart
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize
 bindsym $mod+r mode "resize"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-# volume controls no media keys
-bindsym $mod+Control+bracketright exec amixer -q set Master 5dB+ unmute
-bindsym $mod+Control+bracketleft exec amixer -q set Master 5dB- unmute
-bindsym $mod+Control+p exec amixer -D pulse set Master 1+ toggle
-
 bindsym $mod+e exec "pcmanfm"
 bindsym Print exec "shutter -s"
-
 bindsym $mod+F1 exec "google-chrome"
 # bindsym $mod+F2 exec ""
 # bindsym $mod+F3 exec ""

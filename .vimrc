@@ -81,7 +81,6 @@ filetype plugin on
 " leader config
 let mapleader = " "
 
-
 " movement config
 " one line up/down regardless of wrapping
 nnoremap j gj
@@ -159,6 +158,9 @@ let g:tmuxline_preset = {
 
 " use no special powerline symbols in tmuxline ~ reaches out to tmux in shell
 let g:tmuxline_powerline_separators = 0
+
+" source vimrc
+nnoremap <Leader>r :source ~/.vimrc<CR>
 
 " buffer navigation
 nnoremap <Leader>h :bp<CR>
