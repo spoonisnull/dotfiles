@@ -80,11 +80,7 @@ filetype plugin on
 
 " leader config
 let mapleader = " "
-nmap <leader>n :tabnew<Enter>
-nmap <leader>l :tabnext<Enter>
-nmap <leader>h :tabprev<Enter>
-nnoremap <Leader>+ :bp<CR>
-nnoremap <Leader>: :bn<CR>
+
 
 " movement config
 " one line up/down regardless of wrapping
@@ -164,6 +160,10 @@ let g:tmuxline_preset = {
 " use no special powerline symbols in tmuxline ~ reaches out to tmux in shell
 let g:tmuxline_powerline_separators = 0
 
+" buffer navigation
+nnoremap <Leader>h :bp<CR>
+nnoremap <Leader>l :bn<CR>
+
 " Fuzzy buffer selector function
 function! FuzzyBufferSelect(pattern) abort
   let buffercount = bufnr("$")
@@ -202,3 +202,4 @@ while c <= 99
   execute "nnoremap " . c . "gb :" . c . "b\<CR>"
   let c += 1
 endwhile
+

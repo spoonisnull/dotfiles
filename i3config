@@ -42,7 +42,6 @@ hide_edge_borders vertical
 new_window pixel 3
 
 ## Volume control
-
 # Path to volume control, without trailing slash
 set $volumepath ~/Apps/i3-volume
 
