@@ -83,7 +83,8 @@ let mapleader = " "
 nmap <leader>n :tabnew<Enter>
 nmap <leader>l :tabnext<Enter>
 nmap <leader>h :tabprev<Enter>
-
+nnoremap <Leader>+ :bp<CR>
+nnoremap <Leader>: :bn<CR>
 
 " movement config
 " one line up/down regardless of wrapping
@@ -102,9 +103,11 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " syntastic config
+set statusline=
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline+=%n
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -141,6 +144,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Disable whitespace detection
 let g:airline#extensions#whitespace#enabled = 0
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " Remove colour highlighting on section_z
 let g:airline_section_warning = ''
@@ -191,3 +196,9 @@ endfunction
 " binding for FuzzyBufferSelect
 command! -nargs=1 B :call FuzzyBufferSelect("<args>")
 
+" Ngb jump to Nth buffer
+let c = 1
+while c <= 99
+  execute "nnoremap " . c . "gb :" . c . "b\<CR>"
+  let c += 1
+endwhile
