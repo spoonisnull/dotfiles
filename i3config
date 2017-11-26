@@ -1,7 +1,8 @@
 set $mod Mod1
 set $mod4 Mod4
 
-font pango:Input Mono Medium 10
+# font pango:Input Mono Medium 10
+font pango:Px437 IBM VGA8 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -98,7 +99,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod4+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'Px437 IBM VGA8-12'"
 bindsym $mod+1 focus output DP-1-1
 bindsym $mod+2 focus output DVI-D-0
 bindsym $mod+3 focus output DP-1
