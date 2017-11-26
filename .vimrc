@@ -59,8 +59,10 @@ set t_Co=256
 set tabstop=8
 set visualbell
 set wildmenu
+
 " lock current line to the middle
 set scrolloff=999
+
 " share system clipboard and unnamed reg
 set clipboard=unnamedplus
 
@@ -68,7 +70,8 @@ set clipboard=unnamedplus
 set cursorline
 hi CursorLine none
 hi CursorLine ctermbg=black ctermfg=none
-hi LineNr ctermbg=black ctermfg=darkred
+hi CursorLineNr ctermbg=black ctermfg=white
+hi LineNr ctermbg=black ctermfg=darkred 
 
 " set vertical line highlighting
 " set cursorcolumn
@@ -165,6 +168,7 @@ nnoremap <Leader>r :source ~/.vimrc<CR>
 " buffer navigation
 nnoremap <Leader>h :bp<CR>
 nnoremap <Leader>l :bn<CR>
+nnoremap <Leader>x :bd<CR>
 
 " Fuzzy buffer selector function
 function! FuzzyBufferSelect(pattern) abort

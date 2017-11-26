@@ -5,14 +5,14 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "Px437 IBM VGA8:style=Regular:pixelsize=17:antialias=false:autohint=false";
+char font[] = "Px437 IBM VGA8:style=Regular:pixelsize=15:antialias=false:autohint=false";
 
 /* disable bold, italic and roman fonts globally */
-int disablebold = 0;
-int disableitalic = 0;
-int disableroman = 0;
+int disablebold = 1;
+int disableitalic = 1;
+int disableroman = 1;
 
-int borderpx = 2;
+int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -125,7 +125,7 @@ unsigned int defaultrcs = 15;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-unsigned int cursorshape = 2;
+unsigned int cursorshape = 4;
 
 /*
  * Default columns and rows numbers

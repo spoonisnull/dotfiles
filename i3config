@@ -9,10 +9,8 @@ floating_modifier $mod
 # fibonacci layout
 for_window [class=".*"] split toggle
 
-# gaps
-set $gap 5
-gaps inner $gap
-gaps outer $gap
+gaps inner 10
+gaps outer 20
 
 set $base0B #ffcc66
 set $base00 #2d2d2d
