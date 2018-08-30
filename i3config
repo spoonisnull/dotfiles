@@ -1,129 +1,129 @@
 set $mod Mod1
 set $mod4 Mod4
 
-# font pango:Input Mono Medium 10
-font pango:Px437 IBM VGA8 12
+font pango:Fantasque Sans Mono 10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# fibonacci layout
+for_window [class="^.*"] border pixel 1
 for_window [class=".*"] split toggle
 
-gaps inner 10
-gaps outer 20
+# gruvbox colourscheme
+set $base00 #282828
+set $base01 #cc241d
+set $base02 #98971a
+set $base03 #d79921
+set $base04 #458588
+set $base05 #b16286
+set $base06 #689d6a
+set $base07 #a89984
+set $base08 #928374
+set $base09 #fb4934
+set $base0A #b8bb26
+set $base0B #fabd2f
+set $base0C #83a598
+set $base0D #d3869b
+set $base0E #8ec07c
+set $base0F #ebdbb2
 
-set $base0B #ffcc66
-set $base00 #2d2d2d
-set $base04 #a09f93
-set $base0B #99cc99
-
-# class                 border  backgr. text    indicator child_border
-client.focused          $base0B $base00 $base04 $base0B $base0B  
-client.unfocused        $base00 $base00 $base00 $base00 $base00  
+client.focused          $base04 $base04 $base04 $base04 $base04
+client.unfocused        $base00 $base00 $base00 $base00 $base00
 client.focused_inactive $base00 $base00 $base00 $base00 $base00  
-client.urgent           $base0B $base00 $base04 $base0B $base0B  
+client.urgent           $base09 $base09 $base09 $base09 $base09  
 
-bar {
-    status_command ~/.i3status.sh
-    tray_output primary
-    output DP-1
-# hide workspace names
-    workspace_buttons no
-    colors {
-    background $base00  
-    }
-}
+floating_modifier $mod
+focus_follows_mouse yes
+# workspace_layout default|stacking|tabbed
 
-new_window normal
-hide_edge_borders vertical 
-new_window pixel 2
-
-## Volume control
-set $volumepath ~/Apps/i3-volume
-set $statuscmd i3status
-set $statussig SIGUSR1
-set $volumestep 5
-bindsym XF86AudioRaiseVolume exec $volumepath/volume -i $volumestep -n -t $statuscmd -u $statussig
-bindsym XF86AudioLowerVolume exec $volumepath/volume -d $volumestep -n -t $statuscmd -u $statussig
-bindsym XF86AudioMute exec $volumepath/volume -m -n -t $statuscmd -u $statussig
-
-# media controls
-bindsym XF86AudioPlay exec mpcplay
-bindsym XF86AudioStop exec mpcpause
-bindsym XF86AudioPrev exec mpcprev
-bindsym XF86AudioNext exec mpcnext
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-
-  bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-
-# back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-# autorun
-exec ~/.screenlayout/i3_four_monitors.sh
+exec --no-startup-id ~/.screenlayout/3monitor.sh
 exec --no-startup-id nitrogen --restore
-exec nm-applet
-exec shutter --min_at_startup
-exec /opt/urserver/urserver-start --no-manager --no-notify
-exec redshift-gtk
-exec dbus-launch dropbox stop && dbus-launch dropbox start
-exec caffeine-indicator
-exec mopidy
-exec xautolock -time 60 -locker 'fuzzy_lock.sh' &
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift-gtk
+exec --no-startup-id caffeine-indicator
+exec --no-startup-id shutter --min_at_startup
+exec --no-startup-id copyq
+exec --no-startup-id ~/.trackball.sh
 
-bindsym $mod+Return exec st
+# bindsym $mod+Return exec terminator
+bindsym $mod+Return exec rxvt-unicode -e zsh
 bindsym $mod+w kill
+bindsym $mod+d exec rofi -show run
+bindsym XF86Explorer exec pcmanfm
+bindsym Print exec shutter -s
+bindsym $mod+F9 exec systemctl suspend
+
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
 bindsym $mod4+h move left
 bindsym $mod4+j move down
 bindsym $mod4+k move up
 bindsym $mod4+l move right
+
 bindsym $mod4+- split h
 bindsym $mod4+\ split v
-bindsym $mod+f fullscreen toggle
-# bindsym $mod+s layout stacking
-# bindsym $mod+t layout tabbed
-# bindsym $mod+s layout toggle split
-bindsym $mod4+space floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -fn 'Px437 IBM VGA8-12'"
-bindsym $mod+1 focus output DP-1-1
-bindsym $mod+2 focus output DVI-D-0
-bindsym $mod+3 focus output DP-1
-bindsym $mod+4 focus output HDMI-0
-bindsym $mod4+1 move container to output DP-1-1
-bindsym $mod4+2 move container to output DVI-D-0
-bindsym $mod4+3 move container to output DP-1
-bindsym $mod4+4 move container to output HDMI-0
-bindsym $mod+Shift+c reload
-bindsym $mod4+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+r mode "resize"
-bindsym $mod+e exec "pcmanfm"
-bindsym Print exec "shutter -s"
-bindsym $mod+F1 exec "google-chrome"
-# bindsym $mod+F2 exec ""
-# bindsym $mod+F3 exec ""
-# bindsym $mod+F4 exec ""
-# bindsym $mod+F5 exec ""
-# bindsym $mod+F6 exec ""
-# bindsym $mod+F7 exec ""
-bindsym $mod+F8 exec --no-startup-id i3exit shutdown, mode "default"
-bindsym $mod+F9 exec fuzzy_lock.sh
-bindsym $mod+F10 exec --no-startup-id i3exit suspend, mode "default"
-bindsym $mod+F11 exec --no-startup-id i3exit reboot, mode "default"
-# bindsym $mod+F12 exec ""
 
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod4+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+bindsym $mod4+u focus child
+
+# switch to output
+bindsym $mod+1 focus output DP-1-1
+bindsym $mod+2 focus output HDMI-0
+bindsym $mod+3 focus output DVI-D-1
+
+# move focused container to output
+bindsym $mod4+1 move container to output DP-1-1
+bindsym $mod4+2 move container to output HDMI-0
+bindsym $mod4+3 move container to output DVI-D-1
+
+# switch to workspace
+bindsym $mod+Shift+1 workspace 1
+
+# move focused container to workspace
+# bindsym $mod+Shift+1 move container to workspace 1
+
+# volume and spotify control
+bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym XF86AudioStop exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 4dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 4dB- unmute
+bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Kill session?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym j resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bar {
+  workspace_buttons yes
+  strip_workspace_numbers no
+  status_command i3status
+  tray_output primary
+  output HDMI-0
+  workspace_buttons no
+  colors {
+    background $base00
+  }
+}
