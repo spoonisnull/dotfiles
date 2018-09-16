@@ -25,18 +25,20 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline-themes'
   Plug 'morhetz/gruvbox'
   Plug 'scrooloose/nerdtree'
+  Plug 'JamshedVesuna/vim-markdown-preview'
+  Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 let mapleader = " "
 
-set autoindent
+" set autoindent
 set autoread
 set background=dark
 set backspace=indent,eol,start
 set encoding=utf-8
 set expandtab
 set foldenable
-set foldlevelstart=10
+set foldlevelstart=5
 set hidden
 set hlsearch
 set ignorecase
@@ -67,6 +69,10 @@ set cursorline
 set timeoutlen=1000
 set ttimeoutlen=1
 
+set directory^=$HOME/.vim/tmp//
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_github=1
+
 hi CursorLine ctermbg=lightgray ctermfg=none
 hi CursorLineNr ctermbg=lightgray ctermfg=white
 hi LineNr ctermbg=black ctermfg=darkred 
@@ -91,13 +97,16 @@ nnoremap <Leader>h :bp<CR>
 nnoremap <Leader>l :bn<CR>
 nnoremap <Leader>x :bd<CR>
 
+" enable gitgutter
+nnoremap <Leader>g :GitGutterToggle<CR>
+
 " airline config
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts=1
 
-let g:airline_left_sep = ''
+let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ' '
-let g:airline_right_sep = ''
+let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ' '
 
 " let g:airline_left_sep = ''
@@ -135,9 +144,9 @@ let g:tmuxline_preset = {
 " use no special powerline symbols in tmuxline ~ reaches out to tmux in shell
 " let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
-    \ 'left' : '',
+    \ 'left' : '',
     \ 'left_alt': '',
-    \ 'right' : '',
+    \ 'right' : '',
     \ 'right_alt' : '',
     \ 'space' : ' '}
 
