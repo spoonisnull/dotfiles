@@ -1,0 +1,38 @@
+# app launch shortcuts
+cmd + alt + ctrl - b : open -a "Google Chrome"
+cmd + alt + ctrl - t : open -a iTerm
+cmd + alt + ctrl - f : open -a Finder
+
+# focus window
+alt - h : chunkc tiling::window --focus west
+alt - j : chunkc tiling::window --focus south
+alt - k : chunkc tiling::window --focus north
+alt - l : chunkc tiling::window --focus east
+
+# move window
+shift + cmd - h : chunkc tiling::window --warp west
+shift + cmd - j : chunkc tiling::window --warp south
+shift + cmd - k : chunkc tiling::window --warp north
+shift + cmd - l : chunkc tiling::window --warp east
+
+# switch desktop
+cmd + alt + ctrl - h : skhd -k "ctrl - left"
+cmd + alt + ctrl - l : skhd -k "ctrl - right"
+
+# window control
+alt - f3 : skhd -k "cmd - m"
+
+# go fullscreen
+shift + alt - f : chunkc tiling::window --toggle fullscreen
+
+# increase region size
+cmd + alt + ctrl - left : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+cmd + alt + ctrl - down : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+cmd + alt + ctrl - up : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+cmd + alt + ctrl - right : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+
+# float / unfloat window
+# alt - t : chunkc tiling::window --toggle float
+alt - t : chunkc tiling::desktop --layout bsp
+alt - f : chunkc tiling::desktop --layout float
+

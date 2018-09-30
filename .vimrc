@@ -31,7 +31,7 @@ call plug#end()
 
 let mapleader = " "
 
-" set autoindent
+set autoindent
 set autoread
 set background=dark
 set backspace=indent,eol,start
@@ -66,7 +66,7 @@ set visualbell
 set wildmenu
 set clipboard=unnamed
 set cursorline
-set timeoutlen=1000
+set timeoutlen=200
 set ttimeoutlen=1
 
 set directory^=$HOME/.vim/tmp//
@@ -95,7 +95,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <Leader>r :source ~/.vimrc<CR>
 nnoremap <Leader>h :bp<CR>
 nnoremap <Leader>l :bn<CR>
-nnoremap <Leader>x :bd<CR>
+nnoremap <Leader>x :bd!<CR>
 
 " enable gitgutter
 nnoremap <Leader>g :GitGutterToggle<CR>
