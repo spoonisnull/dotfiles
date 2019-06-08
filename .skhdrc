@@ -1,7 +1,6 @@
 # app launch shortcuts
-cmd + alt + ctrl - b : open -a "Google Chrome"
-cmd + alt + ctrl - t : open -a iTerm
-cmd + alt + ctrl - f : open -a Finder
+ctrl + alt + cmd - t : open -a Kitty
+ctrl + alt + cmd - f : open -a Finder
 
 # focus window
 alt - h : chunkc tiling::window --focus west
@@ -16,8 +15,29 @@ shift + cmd - k : chunkc tiling::window --warp north
 shift + cmd - l : chunkc tiling::window --warp east
 
 # switch desktop
-cmd + alt + ctrl - h : skhd -k "ctrl - left"
-cmd + alt + ctrl - l : skhd -k "ctrl - right"
+shift + alt - h : skhd -k "ctrl - left"
+shift + alt - l : skhd -k "ctrl - right"
+shift + alt - j : skhd -k "ctrl - down"
+shift + alt - k : skhd -k "ctrl - up"
+
+shift + alt - 1 : chunkc tiling::desktop --focus 1
+shift + alt - 2 : chunkc tiling::desktop --focus 2
+shift + alt - 3 : chunkc tiling::desktop --focus 3
+shift + alt - 4 : chunkc tiling::desktop --focus 4
+shift + alt - 5 : chunkc tiling::desktop --focus 5
+shift + alt - 6 : chunkc tiling::desktop --focus 6
+
+# move window to adjacent desktop
+shift + cmd + alt - l : chunkc tiling::window --send-to-desktop next
+shift + cmd + alt - h : chunkc tiling::window --send-to-desktop prev
+
+# send to desktop
+shift + cmd + alt - 1 : chunkc tiling::window --send-to-desktop 1
+shift + cmd + alt - 2 : chunkc tiling::window --send-to-desktop 2
+shift + cmd + alt - 3 : chunkc tiling::window --send-to-desktop 3
+shift + cmd + alt - 4 : chunkc tiling::window --send-to-desktop 4
+shift + cmd + alt - 5 : chunkc tiling::window --send-to-desktop 5
+shift + cmd + alt - 6 : chunkc tiling::window --send-to-desktop 6
 
 # window control
 alt - f3 : skhd -k "cmd - m"
@@ -26,10 +46,10 @@ alt - f3 : skhd -k "cmd - m"
 shift + alt - f : chunkc tiling::window --toggle fullscreen
 
 # increase region size
-cmd + alt + ctrl - left : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
-cmd + alt + ctrl - down : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
-cmd + alt + ctrl - up : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
-cmd + alt + ctrl - right : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+cmd + alt + ctrl - h : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+cmd + alt + ctrl - j : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+cmd + alt + ctrl - k : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+cmd + alt + ctrl - l : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
 
 # float / unfloat window
 # alt - t : chunkc tiling::window --toggle float
