@@ -19,19 +19,31 @@ chunkc core::hotload 1
 # NOTE: the following are config variables for the chunkwm-tiling plugin.
 #
 
-chunkc set global_desktop_mode           float
+chunkc set global_desktop_mode           bsp
 
-# chunkc set 1_desktop_offset_top          30
-# chunkc set 1_desktop_offset_bottom       30
-# chunkc set 1_desktop_offset_left         30
-# chunkc set 1_desktop_offset_right        30
-# chunkc set 1_desktop_offset_gap          15
+chunkc set 1_desktop_mode                bsp
+chunkc set 2_desktop_mode                bsp
+chunkc set 3_desktop_mode                bsp
+chunkc set 4_desktop_mode                bsp 
+chunkc set 5_desktop_mode                float
 
-chunkc set global_desktop_offset_top     5
-chunkc set global_desktop_offset_bottom  5
-chunkc set global_desktop_offset_left    5
-chunkc set global_desktop_offset_right   5
-chunkc set global_desktop_offset_gap     5
+chunkc set 1_desktop_offset_top          50
+chunkc set 1_desktop_offset_bottom       50
+chunkc set 1_desktop_offset_left         50
+chunkc set 1_desktop_offset_right        50
+chunkc set 1_desktop_offset_gap          15
+
+chunkc set window_region_locked          1
+chunkc set window_float_topmost          1
+chunkc set window_fade_inactive          1
+chunkc set window_fade_alpha             0.95
+chunkc set window_fade_duration          0.2
+
+chunkc set global_desktop_offset_top     10
+chunkc set global_desktop_offset_bottom  10
+chunkc set global_desktop_offset_left    10
+chunkc set global_desktop_offset_right   10
+chunkc set global_desktop_offset_gap     7.5
 
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
@@ -41,33 +53,34 @@ chunkc set bsp_optimal_ratio             1.618
 chunkc set bsp_split_mode                optimal
 chunkc set bsp_split_ratio               0.5
 
-chunkc set window_focus_cycle            monitor
-chunkc set mouse_follows_focus           1
+chunkc set window_focus_cycle            all
+chunkc set mouse_follows_focus           off
+chunkc set mouse_follows_focus           all
 chunkc set window_float_next             0
 chunkc set window_float_center           1
 chunkc set window_region_locked          1
+chunkc set ffm_standby_on_float          0
 
 #
 # NOTE: shell commands require escaped quotes
 #       to pass value containing a whitespace.
 #
 # chunkc set mouse_modifier              \"cmd shift\"
-chunkc set mouse_modifier                fn
+chunkc set mouse_modifier                alt
 
-chunkc set preselect_border_color        0xffffff00
-chunkc set preselect_border_width        4
+chunkc set preselect_border_color        0xffffffff
+chunkc set preselect_border_width        0
 chunkc set preselect_border_radius       0
 
 #
 # NOTE: the following are config variables for the chunkwm-border plugin.
 #
 
-# gruvbox green
-# chunkc set focused_border_color          0xFF689d6a
-# chunkc set focused_border_color          0xFF928374
-chunkc set focused_border_color          0xFFd3869b
-chunkc set focused_border_width          3
-chunkc set focused_border_radius         5
+# chunkc set focused_border_color          0xff00AF5F
+chunkc set focused_border_color          0xff83A598
+chunkc set focused_border_width          6
+chunkc set focused_border_radius         9
+chunkc set focused_border_outline        1
 chunkc set focused_border_skip_floating  1
 
 #
@@ -79,28 +92,36 @@ chunkc core::load tiling.so
 # chunkc core::load ffm.so
 chunkc core::load border.so
 
-#
-# NOTE: shell commands require escaped quotes
-#       to pass value containing a whitespace.
-#
-
-# chunkc tiling::rule --owner Shell --state tile &
 # chunkc tiling::rule --owner Chrome --state tile &
 # chunkc tiling::rule --owner Firefox --state tile &
 # chunkc tiling::rule --owner Franz --state tile &
 # chunkc tiling::rule --owner Slack --state tile &
+# chunkc tiling::rule --owner Mail --state float &
+# chunkc tiling::rule --owner Finder --state float &
+# chunkc tiling::rule --owner Bitwarden --state float &
+# chunkc tiling::rule --owner Calendar --state float &
+# chunkc tiling::rule --owner Terminal --state float &
+# chunkc tiling::rule --owner \"QuickTime Player\" --state float &
+
+# preset state apps
 chunkc tiling::rule --owner FaceTime --state float &
-chunkc tiling::rule --owner Mail --state float &
-chunkc tiling::rule --owner Finder --state float &
 chunkc tiling::rule --owner Finder --name Copy --state float &
 chunkc tiling::rule --owner Finder --name Info --state float &
+chunkc tiling::rule --owner Finder --name Trash --state float &
 chunkc tiling::rule --owner \"System Preferences\" --state float &
-chunkc tiling::rule --owner Bitwarden --state float &
-chunkc tiling::rule --owner Calendar --state float &
 chunkc tiling::rule --owner Calculator --state float &
 chunkc tiling::rule --owner Spotify --state float &
-chunkc tiling::rule --owner Terminal --state float &
+chunkc tiling::rule --owner zoom.us --name \"Zoom - Free Account\" --state float &
 # chunkc tiling::rule --owner VLC --state float &
-chunkc tiling::rule --owner \"QuickTime Player\" --state float &
-chunkc tiling::rule --owner Dash --state float &
 
+# preset workspace apps
+chunkc tiling::rule --owner Kitty --desktop 1 &
+chunkc tiling::rule --owner Chrome --desktop 2 &
+chunkc tiling::rule --owner Franz --desktop 3 &
+chunkc tiling::rule --owner Firefox --desktop 4 &
+chunkc tiling::rule --owner Bitwarden --desktop 5 &
+chunkc tiling::rule --owner Spotify --desktop 5 &
+
+chunkc border::radius 0 --owner Kitty
+
+chunkwm --load-sa
