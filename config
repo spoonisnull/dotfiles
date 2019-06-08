@@ -1,6 +1,6 @@
 # newsbeuter rss reader config
 auto-reload yes
-browser google-chrome
+browser firefox
 cleanup-on-quit yes
 feed-sort-order title-dec
 refresh-on-startup yes
@@ -19,10 +19,11 @@ bind-key k up article
 ignore-mode "display"
 
 # colorscheme
-color info green black reverse
-color listnormal_unread yellow default
-color listfocus red default reverse bold
-color listfocus_unread red default reverse bold
+color info              blue    black   
+color listnormal        white   default 
+color listnormal_unread yellow   default 
+color listfocus         white   black 
+color listfocus_unread  blue    black 
 
 # highlights
 highlight article "^(Title):.*$" blue default
