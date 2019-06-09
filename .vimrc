@@ -2,6 +2,8 @@ if !exists("g:syntax_on")
   syntax enable
 endif
 
+let $MYVIMRC = '~/.vimrc'
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -24,7 +26,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'PProvost/vim-ps1'
-  Plug 'severin-lemaignan/vim-minimap'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'w0rp/ale'
   Plug 'tommcdo/vim-fubitive'
@@ -33,8 +34,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
+  Plug 'Yggdroot/indentLine'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'neoclide/coc.nvim', {'do': './install.sh nightlyll/undotree'}
+  Plug 'mbbill/undotree'
 call plug#end()
-
+"
 " cursorline
 set cursorline
 
@@ -76,33 +81,24 @@ set timeoutlen=400
 set ttimeoutlen=1
 set mouse=a
 set rnu
+augroup every
+  autocmd!
+  au InsertEnter * set norelativenumber
+  au InsertLeave * set relativenumber
+augroup END
 " set scrolloff=10
 set directory^=$HOME/.vim/tmp//
 set termguicolors
 set shortmess+=A
+set undofile
+" set foldcolumn=5
+set inccommand=nosplit
+set list lcs=trail:·,tab:»·
 
 " cursorline
 hi CursorLine cterm=NONE ctermbg=none ctermfg=none guibg=darkred guifg=white
 hi CursorLineNr ctermbg=black ctermfg=darkred guibg=black guifg=white
-hi LineNr ctermbg=black ctermfg=darkred 
-
-" tmuxline config
-" leT g:tmuxline_preset = {
-"       \'a'    : '#S',
-"       \'b'    : '#(~/.tmux/tmux_sessions.sh)',
-"       \'win'  : '#I #W',
-"       \'cwin' : '▶ #I #W',
-"       \'y'    : '%d/%m %a',
-"       \'z'    : '%R'}
-
-" " use no special powerline symbols in tmuxline ~ reaches out to tmux in shell
-" " let g:tmuxline_powerline_separators = 0
-" let g:tmuxline_separators = {
-"     \ 'left' : '',
-"     \ 'left_alt': '',
-"     \ 'right' : '',
-"     \ 'right_alt' : '',
-" \ 'space' : ' '}
+hi LineNr ctermbg=black ctermfg=darkred
 
 " markdown
 let vim_markdown_preview_browser='Google Chrome'
@@ -117,8 +113,10 @@ hi GitGutterChangeDelete ctermbg=black ctermfg=darkred
 
 let g:SnazzyTransparent = 1
 
-nnoremap j gj
-nnoremap k gk
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap Q @@
+nnoremap H ^
 
 " Clipboard
 nnoremap <Leader>c :.w !pbcopy<CR><CR>
@@ -132,7 +130,7 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-nnoremap <Leader>e :e 
+nnoremap <Leader>e :e
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>r :source ~/.vimrc<CR>
 nnoremap <Leader>h :bp<CR>
@@ -146,7 +144,7 @@ nnoremap <Leader>n :noh<CR>
 nnoremap <Leader>F :%!python -m json.tool<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>m :MinimapToggle<CR>
+nnoremap <Leader>v :e $MYVIMRC<CR>
 
 " enable gitgutter
 nnoremap <Leader>g :GitGutterToggle<CR>
@@ -157,76 +155,16 @@ nnoremap <Leader>k Hzz
 nnoremap <Leader>d :Gdiff<CR>
 nnoremap <Leader>s :Gstatus<CR>
 nnoremap <Leader>b :Gblame<CR>
+autocmd QuickFixCmdPost *grep* cwindow
+nnoremap <Leader>G :Ggrep
 
 " nerdtree
 nnoremap <Leader>o :NERDTreeToggle<CR>
 nnoremap <Leader>p :let NERDTreeQuitOnOpen=1<CR>
 nnoremap <Leader>P :let NERDTreeQuitOnOpen=0<CR>
-
-" ctags
-inoremap <C-f> g<C-]>
-nnoremap <C-f> g<C-]>
-
-" fzf.vim
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>G :GFiles?<CR>
-nnoremap <Leader>C :Commits<CR>
-nnoremap <S-Tab> :Buffers<CR>
-
-" if exists('$TMUX')
-"   " Colors in tmux
-"   let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-"   let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-" endif
-
-let g:jellybeans_overrides = {
-\    'background': { 'guibg': '000000' },
-\}
-
-let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-\}
-if has('termguicolors') && &termguicolors
-    let g:jellybeans_overrides['background']['guibg'] = 'none'
-endif
-
-set t_Co=256
-colors gruvbox
-set background=dark
-
 let NERDTreeQuitOnOpen=1
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=40
 let NERDTreeShowHidden=1
-
-" minimap
-let g:minimap_highlight='LineNr'
- 
-" dash
-nnoremap <Leader>D :Dash<CR>
-
-
-" airline config
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts=1
-
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ' '
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ' '
-
-let g:airline_symbols = get(g:,'airline_symbols',{})
-let g:airline_symbols.linenr = ''
-
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1 
-
-" Show just the filename, not the whole path
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" Disable whitespace detection
-let g:airline#extensions#whitespace#enabled = 0
-
-let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -239,5 +177,282 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
+\ }
+
+" ctags
+inoremap <C-f> g<C-]>
+nnoremap <C-f> g<C-]>
+
+" fzf.vim
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>S :GFiles?<CR>
+nnoremap <Leader>C :Commits<CR>
+nnoremap <S-Tab> :Buffers<CR>
+
+set t_Co=256
+colors gruvbox
+set background=dark
+
+" dash
+nnoremap <Leader>D :Dash<CR>
+
+" indentline
+" let g:indentLine_char = '┊'
+let g:indentLine_char = '▏'
+
+" coc.vim
+autocmd FileType json syntax match Comment +\/\/.\+$+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <silent><expr> <S-Tab>
+      \ pumvisible() ? "\<C-p>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" airline config
+let g:airline_theme = 'gruvbox'
+let g:airline_focuslost_inactive = 1
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+let g:airline_symbols = get(g:,'airline_symbols',{})
+let g:airline_symbols.linenr = ''
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'c'  : 'COM',
+    \ 'i'  : 'INS',
+    \ 'ic' : 'INS',
+    \ 'ix' : 'INS',
+    \ 'n'  : 'NOR',
+    \ 'ni' : 'NOR',
+    \ 'no' : 'NOR',
+    \ 'R'  : 'REP',
+    \ 'Rv' : 'REP',
+    \ 's'  : 'SEL',
+    \ 'S'  : 'SEL',
+    \ '' : 'SEL',
+    \ 't'  : 'T',
+    \ 'v'  : 'VIS',
+    \ 'V'  : 'VIS',
+    \ '' : 'VIS',
     \ }
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Tabline splits
+let g:airline#extensions#tabline#show_splits = 1
+
+" Tabline separators
+let g:airline#extensions#tabline#left_sep = '█'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = '█'
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" Show just the filename, not the whole path
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Disable whitespace detection
+let g:airline#extensions#whitespace#enabled = 1
+
+" ctags
+inoremap <C-f> g<C-]>
+nnoremap <C-f> g<C-]>
+
+" fzf.vim
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>S :GFiles?<CR>
+nnoremap <Leader>C :Commits<CR>
+nnoremap <S-Tab> :Buffers<CR>
+
+set t_Co=256
+colors gruvbox
+set background=dark
+
+
+" minimap
+let g:minimap_highlight='LineNr'
+
+" dash
+nnoremap <Leader>D :Dash<CR>
+
+" indentline
+" let g:indentLine_char = '┊'
+let g:indentLine_char = '▏'
+
+" coc.vim
+autocmd FileType json syntax match Comment +\/\/.\+$+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <silent><expr> <S-Tab>
+      \ pumvisible() ? "\<C-p>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" airline config
+let g:airline_theme = 'gruvbox'
+let g:airline_focuslost_inactive = 1
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+let g:airline_symbols = get(g:,'airline_symbols',{})
+let g:airline_symbols.linenr = ''
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'c'  : 'COM',
+    \ 'i'  : 'INS',
+    \ 'ic' : 'INS',
+    \ 'ix' : 'INS',
+    \ 'n'  : 'NOR',
+    \ 'ni' : 'NOR',
+    \ 'no' : 'NOR',
+    \ 'R'  : 'REP',
+    \ 'Rv' : 'REP',
+    \ 's'  : 'SEL',
+    \ 'S'  : 'SEL',
+    \ '' : 'SEL',
+    \ 't'  : 'T',
+    \ 'v'  : 'VIS',
+    \ 'V'  : 'VIS',
+    \ '' : 'VIS',
+    \ }
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Tabline splits
+let g:airline#extensions#tabline#show_splits = 1
+
+" Tabline separators
+let g:airline#extensions#tabline#left_sep = '█'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = '█'
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" Show just the filename, not the whole path
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Disable whitespace detection
+let g:airline#extensions#whitespace#enabled = 1
+" ctags
+inoremap <C-f> g<C-]>
+nnoremap <C-f> g<C-]>
+
+" fzf.vim
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>S :GFiles?<CR>
+nnoremap <Leader>C :Commits<CR>
+nnoremap <S-Tab> :Buffers<CR>
+
+set t_Co=256
+colors gruvbox
+set background=dark
+
+
+" minimap
+let g:minimap_highlight='LineNr'
+
+" dash
+nnoremap <Leader>D :Dash<CR>
+
+" indentline
+" let g:indentLine_char = '┊'
+let g:indentLine_char = '▏'
+
+" coc.vim
+autocmd FileType json syntax match Comment +\/\/.\+$+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <silent><expr> <S-Tab>
+      \ pumvisible() ? "\<C-p>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" airline config
+let g:airline_theme = 'gruvbox'
+let g:airline_focuslost_inactive = 1
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+let g:airline_symbols = get(g:,'airline_symbols',{})
+let g:airline_symbols.linenr = ''
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'c'  : 'COM',
+    \ 'i'  : 'INS',
+    \ 'ic' : 'INS',
+    \ 'ix' : 'INS',
+    \ 'n'  : 'NOR',
+    \ 'ni' : 'NOR',
+    \ 'no' : 'NOR',
+    \ 'R'  : 'REP',
+    \ 'Rv' : 'REP',
+    \ 's'  : 'SEL',
+    \ 'S'  : 'SEL',
+    \ '' : 'SEL',
+    \ 't'  : 'T',
+    \ 'v'  : 'VIS',
+    \ 'V'  : 'VIS',
+    \ '' : 'VIS',
+    \ }
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Tabline splits
+let g:airline#extensions#tabline#show_splits = 1
+
+" Tabline separators
+let g:airline#extensions#tabline#left_sep = '█'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = '█'
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" Show just the filename, not the whole path
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Disable whitespace detection
+let g:airline#extensions#whitespace#enabled = 1
 
