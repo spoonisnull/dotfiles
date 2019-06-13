@@ -40,6 +40,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'do': './install.sh nightlyll/undotree'}
   Plug 'mbbill/undotree'
   Plug 'mhinz/vim-startify'
+  Plug 'junegunn/goyo.vim'
 call plug#end()
 
 let mapleader = " "
@@ -120,6 +121,7 @@ map <C-t> :tab split<CR>
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 " ignore wrap when using a count
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+" ignore wrap when using a count
 nnoremap Q @@
 " repeat last macro
 nnoremap <Tab> :bn<CR>
@@ -184,8 +186,8 @@ nnoremap <Leader>C :Commits<CR>
 " fzf git commits
 nnoremap <A-Tab> :Buffers<CR>
 " fzf buffs
-nnoremap <Leader>D :Dash<CR>
-" search current in Dash
+nnoremap <Leader>D :Goyo<CR>
+" enable distraction-free mode
 
 inoremap <C-j> <Esc>:m .+1<CR>==gi
 " move lines
@@ -226,11 +228,15 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-inoremap <silent><expr> <Tab>
+"
+" suggest down
+inoremap <silent><expr> <C-Space>
 \ pumvisible() ? "\<C-n>" :
 \ <SID>check_back_space() ? "\<Tab>" :
 \ coc#refresh()
-inoremap <silent><expr> <S-Tab>
+
+" suggest up
+inoremap <silent><expr> <S-Space>
 \ pumvisible() ? "\<C-p>" :
 \ <SID>check_back_space() ? "\<Tab>" :
 \ coc#refresh()
@@ -273,7 +279,7 @@ let g:airline_mode_map = {
  \ 't'  : 'T',
  \ 'v'  : 'VIS',
  \ 'V'  : 'VIS',
- \ '' : 'VIS',
+ \ '' : 'VIB',
  \ }
 
 " INDENTLINE

@@ -26,6 +26,11 @@ chunkc set 2_desktop_mode                bsp
 chunkc set 3_desktop_mode                bsp
 chunkc set 4_desktop_mode                bsp 
 chunkc set 5_desktop_mode                float
+chunkc set 5_desktop_mode                bsp 
+chunkc set 6_desktop_mode                bsp 
+chunkc set 7_desktop_mode                bsp 
+chunkc set 8_desktop_mode                bsp 
+chunkc set 0_desktop_mode                bsp 
 
 chunkc set 1_desktop_offset_top          30
 chunkc set 1_desktop_offset_bottom       30
@@ -110,7 +115,7 @@ chunkc tiling::rule --owner Finder --name Info --state float &
 chunkc tiling::rule --owner Finder --name Trash --state float &
 chunkc tiling::rule --owner \"System Preferences\" --state float &
 chunkc tiling::rule --owner Calculator --state float &
-chunkc tiling::rule --owner Spotify --state float &
+# chunkc tiling::rule --owner Spotify --state float &
 chunkc tiling::rule --owner zoom.us --name \"Zoom - Free Account\" --state float &
 # chunkc tiling::rule --owner VLC --state float &
 
