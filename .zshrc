@@ -1,7 +1,7 @@
 source ~/.env_vars
 source ~/.secrets
 
-plugins=(compleat copyfile docker encode64 extract git kubectl last-working-dir npm osx pip tig vi-mode zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(compleat docker extract git kubectl osx vi-mode zsh-syntax-highlighting zsh-autosuggestions)
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 HYPHEN_INSENSITIVE="true"
