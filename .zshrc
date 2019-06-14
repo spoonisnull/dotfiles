@@ -1,7 +1,7 @@
 source ~/.env_vars
 source ~/.secrets
 
-plugins=(osx git vi-mode zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(compleat copyfile docker encode64 extract git kubectl last-working-dir npm osx pip tig vi-mode zsh-syntax-highlighting zsh-autosuggestions)
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 HYPHEN_INSENSITIVE="true"
@@ -80,3 +80,6 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='3'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='16'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export SHELL=/usr/local/bin/zsh
+

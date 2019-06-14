@@ -41,6 +41,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'mbbill/undotree'
   Plug 'mhinz/vim-startify'
   Plug 'junegunn/goyo.vim'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'stefandtw/quickfix-reflector.vim'
+  Plug 'kien/ctrlp.vim'
 call plug#end()
 
 let mapleader = " "
@@ -188,6 +191,9 @@ nnoremap <A-Tab> :Buffers<CR>
 " fzf buffs
 nnoremap <Leader>D :Goyo<CR>
 " enable distraction-free mode
+nnoremap <Leader><Leader> <C-w><C-w>
+" switch between quickfix and main
+nnoremap <Leader>m :marks<CR>
 
 inoremap <C-j> <Esc>:m .+1<CR>==gi
 " move lines
@@ -286,4 +292,7 @@ let g:airline_mode_map = {
 let g:indentLine_char = '▏'
 
 " DEVICON
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+" VIM-RIPGREP
+let g:rg_command = 'rg --vimgrep -S'
