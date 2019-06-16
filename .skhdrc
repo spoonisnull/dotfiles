@@ -29,7 +29,7 @@ shift + alt - 6 : chunkc tiling::desktop --focus 6
 shift + alt - 7 : chunkc tiling::desktop --focus 7
 shift + alt - 8 : chunkc tiling::desktop --focus 8
 shift + alt - 9 : chunkc tiling::desktop --focus 9
-shift + alt - 0 : chunkc tiling::desktop --focus 0
+shift + alt - 0 : chunkc tiling::desktop --focus 10
 
 # move window to adjacent desktop
 shift + cmd + alt - l : chunkc tiling::window --send-to-desktop next
@@ -45,7 +45,7 @@ shift + cmd + alt - 6 : chunkc tiling::window --send-to-desktop 6
 shift + cmd + alt - 7 : chunkc tiling::window --send-to-desktop 7
 shift + cmd + alt - 8 : chunkc tiling::window --send-to-desktop 8
 shift + cmd + alt - 9 : chunkc tiling::window --send-to-desktop 9
-shift + cmd + alt - 0 : chunkc tiling::window --send-to-desktop 0
+shift + cmd + alt - 0 : chunkc tiling::window --send-to-desktop 10
 
 # window control
 alt - f3 : skhd -k "cmd - m"
@@ -63,4 +63,7 @@ cmd + alt + ctrl - l : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-
 # alt - t : chunkc tiling::window --toggle float
 alt - t : chunkc tiling::desktop --layout bsp
 alt - f : chunkc tiling::desktop --layout float
+
+# toggle sticky
+cmd + alt + ctrl - s : chunkc tiling::window --toggle sticky
 

@@ -25,23 +25,23 @@ chunkc set 1_desktop_mode                bsp
 chunkc set 2_desktop_mode                bsp
 chunkc set 3_desktop_mode                bsp
 chunkc set 4_desktop_mode                bsp 
-chunkc set 5_desktop_mode                float
-chunkc set 5_desktop_mode                bsp 
-chunkc set 6_desktop_mode                bsp 
-chunkc set 7_desktop_mode                bsp 
+chunkc set 5_desktop_mode                bsp
+chunkc set 6_desktop_mode                float 
+chunkc set 7_desktop_mode                float 
 chunkc set 8_desktop_mode                bsp 
-chunkc set 0_desktop_mode                bsp 
+chunkc set 9_desktop_mode                bsp 
+chunkc set 10_desktop_mode               bsp 
 
-chunkc set 1_desktop_offset_top          30
-chunkc set 1_desktop_offset_bottom       30
-chunkc set 1_desktop_offset_left         30
-chunkc set 1_desktop_offset_right        30
-chunkc set 1_desktop_offset_gap          15
+chunkc set 1_desktop_offset_top          35
+chunkc set 1_desktop_offset_bottom       35
+chunkc set 1_desktop_offset_left         35
+chunkc set 1_desktop_offset_right        35
+chunkc set 1_desktop_offset_gap          20
 
 chunkc set window_region_locked          1
 chunkc set window_float_topmost          1
 chunkc set window_fade_inactive          1
-chunkc set window_fade_alpha             0.95
+chunkc set window_fade_alpha             0.85
 chunkc set window_fade_duration          0.2
 
 chunkc set global_desktop_offset_top     10
@@ -70,7 +70,6 @@ chunkc set ffm_standby_on_float          0
 # NOTE: shell commands require escaped quotes
 #       to pass value containing a whitespace.
 #
-# chunkc set mouse_modifier              \"cmd shift\"
 chunkc set mouse_modifier                alt
 
 chunkc set preselect_border_color        0xffffffff
@@ -83,7 +82,7 @@ chunkc set preselect_border_radius       0
 
 # chunkc set focused_border_color          0xff00AF5F
 chunkc set focused_border_color          0xff83A598
-chunkc set focused_border_width          8
+chunkc set focused_border_width          4
 chunkc set focused_border_radius         9
 chunkc set focused_border_outline        1
 chunkc set focused_border_skip_floating  1
@@ -126,6 +125,9 @@ chunkc tiling::rule --owner Franz --desktop 3 &
 chunkc tiling::rule --owner Firefox --desktop 4 &
 chunkc tiling::rule --owner Bitwarden --desktop 5 &
 chunkc tiling::rule --owner Spotify --desktop 5 &
+chunkc tiling::rule --owner VLC --desktop 5 &
+chunkc tiling::rule --owner zoom.us --desktop 6 &
+chunkc tiling::rule --owner Slack --desktop 6 &
 
 chunkc border::radius 0 --owner Kitty
 
