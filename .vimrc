@@ -44,6 +44,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'jremmen/vim-ripgrep'
   Plug 'stefandtw/quickfix-reflector.vim'
   Plug 'kien/ctrlp.vim'
+  Plug 'yuttie/comfortable-motion.vim'
+  Plug 'gcavallanti/vim-noscrollbar'
 call plug#end()
 
 let mapleader = " "
@@ -104,7 +106,8 @@ colors gruvbox
 set background=dark
 
 " MARKDOWN
-let vim_markdown_preview_browser='Google Chrome'
+" let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_browser='Safari'
 let vim_markdown_preview_github=1
 
 " GITGUTTER
@@ -194,6 +197,8 @@ nnoremap <Leader>D :Goyo<CR>
 nnoremap <Leader><Leader> <C-w><C-w>
 " switch between quickfix and main
 nnoremap <Leader>m :marks<CR>
+" Ctrl-P
+nnoremap <Leader>p :CtrlP<CR>
 
 inoremap <C-j> <Esc>:m .+1<CR>==gi
 " move lines
@@ -296,3 +301,10 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " VIM-RIPGREP
 let g:rg_command = 'rg --vimgrep -S'
+
+" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline()}
+
+function! Noscrollbar(...)
+    let w:airline_section_z = '%{noscrollbar#statusline(30,"■","◫",["◧"],["◨"])}'
+endfunction
+call airline#add_statusline_func('Noscrollbar')
