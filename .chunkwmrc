@@ -24,37 +24,47 @@ chunkc set global_desktop_mode           bsp
 chunkc set 1_desktop_mode                bsp
 chunkc set 2_desktop_mode                bsp
 chunkc set 3_desktop_mode                bsp
-chunkc set 4_desktop_mode                bsp 
+chunkc set 4_desktop_mode                bsp
 chunkc set 5_desktop_mode                bsp
-chunkc set 6_desktop_mode                float 
-chunkc set 7_desktop_mode                float 
-chunkc set 8_desktop_mode                bsp 
-chunkc set 9_desktop_mode                bsp 
-chunkc set 10_desktop_mode               bsp 
+chunkc set 6_desktop_mode                bsp
+chunkc set 7_desktop_mode                bsp
+chunkc set 8_desktop_mode                bsp
+chunkc set 9_desktop_mode                bsp
+chunkc set 10_desktop_mode               bsp
 
-chunkc set 1_desktop_offset_top          35
-chunkc set 1_desktop_offset_bottom       35
-chunkc set 1_desktop_offset_left         35
-chunkc set 1_desktop_offset_right        35
-chunkc set 1_desktop_offset_gap          20
+# chunkc set 1_desktop_offset_top          30
+# chunkc set 1_desktop_offset_bottom       30
+# chunkc set 1_desktop_offset_left         30
+# chunkc set 1_desktop_offset_right        30
+# chunkc set 1_desktop_offset_gap          15
 
 chunkc set window_region_locked          1
 chunkc set window_float_topmost          1
 chunkc set window_fade_inactive          1
-chunkc set window_fade_alpha             0.85
-chunkc set window_fade_duration          0.2
+chunkc set window_fade_alpha             1
+chunkc set window_fade_duration          0.5
+
+# chunkc set global_desktop_offset_top     20
+# chunkc set global_desktop_offset_bottom  20
+# chunkc set global_desktop_offset_left    20
+# chunkc set global_desktop_offset_right   20
+# chunkc set global_desktop_offset_gap     15
+
+# chunkc set desktop_padding_step_size     10.0
+# chunkc set desktop_gap_step_size         5.0
 
 chunkc set global_desktop_offset_top     10
 chunkc set global_desktop_offset_bottom  10
 chunkc set global_desktop_offset_left    10
 chunkc set global_desktop_offset_right   10
-chunkc set global_desktop_offset_gap     7.5
+chunkc set global_desktop_offset_gap     10
 
-chunkc set desktop_padding_step_size     10.0
-chunkc set desktop_gap_step_size         5.0
+chunkc set desktop_padding_step_size     0
+chunkc set desktop_gap_step_size         0
 
 chunkc set bsp_spawn_left                0
-chunkc set bsp_optimal_ratio             1.618
+# chunkc set bsp_optimal_ratio             1.618
+chunkc set bsp_optimal_ratio             1.6
 chunkc set bsp_split_mode                optimal
 chunkc set bsp_split_ratio               0.5
 
@@ -80,11 +90,14 @@ chunkc set preselect_border_radius       0
 # NOTE: the following are config variables for the chunkwm-border plugin.
 #
 
-# chunkc set focused_border_color          0xff00AF5F
-chunkc set focused_border_color          0xff83A598
-chunkc set focused_border_width          4
-chunkc set focused_border_radius         9
-chunkc set focused_border_outline        1
+# chunkc set focused_border_color          0xff83A598
+# chunkc set focused_border_color          0xff2863C7
+# chunkc set focused_border_color          0xffff0087
+chunkc set focused_border_color          0xffD01B24
+chunkc set focused_border_width          6
+# chunkc set focused_border_radius         9
+chunkc set focused_border_radius         4
+chunkc set focused_border_outline        2
 chunkc set focused_border_skip_floating  1
 
 #
@@ -114,21 +127,27 @@ chunkc tiling::rule --owner Finder --name Info --state float &
 chunkc tiling::rule --owner Finder --name Trash --state float &
 chunkc tiling::rule --owner \"System Preferences\" --state float &
 chunkc tiling::rule --owner Calculator --state float &
+chunkc tiling::rule --owner Keybase --state float &
+chunkc tiling::rule --owner \"Pulse Secure\" --state float &
 # chunkc tiling::rule --owner Spotify --state float &
 chunkc tiling::rule --owner zoom.us --name \"Zoom - Free Account\" --state float &
+# chunkc tiling::rule --owner Dash --state float &
 # chunkc tiling::rule --owner VLC --state float &
+chunkc tiling::rule --owner Transmission --state float &
 
 # preset workspace apps
+
+## COMMENT OUT WHEN ON MULTIPLE MONITORS
 chunkc tiling::rule --owner Kitty --desktop 1 &
 chunkc tiling::rule --owner Chrome --desktop 2 &
 chunkc tiling::rule --owner Franz --desktop 3 &
 chunkc tiling::rule --owner Firefox --desktop 4 &
-chunkc tiling::rule --owner Bitwarden --desktop 5 &
 chunkc tiling::rule --owner Spotify --desktop 5 &
 chunkc tiling::rule --owner VLC --desktop 5 &
 chunkc tiling::rule --owner zoom.us --desktop 6 &
 chunkc tiling::rule --owner Slack --desktop 6 &
-
-chunkc border::radius 0 --owner Kitty
+chunkc tiling::rule --owner \"Microsoft Teams\" --desktop 6 &
+chunkc tiling::rule --owner Bitwarden --desktop 9 &
+chunkc tiling::rule --owner ProtonVPN --desktop 10 &
 
 chunkwm --load-sa
