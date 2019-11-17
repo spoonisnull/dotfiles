@@ -1,13 +1,19 @@
-source ~/.env_vars
-source ~/.secrets/.IFS_certs
+source ~/.aliases
+source ~/.secrets
+source ~/.z.sh
 
-# aws eksctl autocomplete
-fpath=($fpath ~/.zsh/completion)
+export ZSH="/Users/zsolt.pazmandy/.oh-my-zsh"
+export SHELL=/usr/local/bin/zsh
+export TERM="xterm-256color"
+VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+eval $(thefuck --alias)
 
-plugins=(compleat docker extract git kubectl osx vi-mode zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(compleat docker extract git kubectl osx vi-mode zsh-syntax-highlighting zsh-autosuggestions forgit)
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME=powerlevel10k/powerlevel10k
 HYPHEN_INSENSITIVE="true"
 DISABLE_UPDATE_PROMPT="true"
 # Uncomment the following line if pasting URLs and other text is messed up
@@ -34,22 +40,25 @@ bindkey -v
 export KEYTIMEOUT=1
 export RTV_BROWSER=chromium
 
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
-fpath=(~/.zsh $fpath)
-
 autoload -Uz compinit && compinit
-
-# aliases
-source ~/.aliases
 
 # powerlevel9k config
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" %F{12}❯ "
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir ssh dir_writable)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs vi_mode)
-POWERLEVEL9K_VI_INSERT_MODE_STRING="INS"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" ❯ "
+
+POWERLEVEL9K_CUSTOM_K8SCTX="echo ⎈ \$(kubectl config view | grep current | awk '{print \$2}' | cut -d'_' -f 2)"
+POWERLEVEL9K_CUSTOM_K8SCTX_BACKGROUND='25'
+POWERLEVEL9K_CUSTOM_K8SCTX_FOREGROUND='255'
+
+POWERLEVEL9K_CUSTOM_GCPPROJ="echo   \$(gcloud config list project 2>&1 | grep project | awk '{print \$3}')"
+POWERLEVEL9K_CUSTOM_GCPPROJ_BACKGROUND='23'
+POWERLEVEL9K_CUSTOM_GCPPROJ_FOREGROUND='255'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir ssh dir_writable custom_first)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status custom_gcpproj custom_k8sctx vcs)
+POWERLEVEL9K_VI_INSERT_MODE_STRING=""
+POWERLEVEL9K_STATUS_OK=false
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="NOR"
 POWERLEVEL9K_VCS_SHORTEN_LENGTH=25
 POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=25
@@ -58,39 +67,47 @@ POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_HOME_ICON="家"
-# POWERLEVEL9K_HOME_ICON="\uF415 "
+POWERLEVEL9K_HOME_ICON=""
 POWERLEVEL9K_ROOT_ICON="#"
 POWERLEVEL9K_SUDO_ICON=$'\uF09C'
 
 # segments
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
 POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=""
+
 # colors
-#DARK_SCHEME POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='12'
-#DARK_SCHEME POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='16'
-#DARK_SCHEME POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='138'
-#DARK_SCHEME POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='16'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='16'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='108'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='16'
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='138'
 
-#DARK_SCHEME POWERLEVEL9K_DIR_HOME_BACKGROUND='16'
-#DARK_SCHEME POWERLEVEL9K_DIR_HOME_FOREGROUND='138'
-#DARK_SCHEME POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='16'
-#DARK_SCHEME POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='138'
+POWERLEVEL9K_DIR_HOME_BACKGROUND='16'
+POWERLEVEL9K_DIR_HOME_FOREGROUND='138'
 
-#DARK_SCHEME POWERLEVEL9K_VCS_CLEAN_FOREGROUND='14'
-#DARK_SCHEME POWERLEVEL9K_VCS_CLEAN_BACKGROUND='16'
-#DARK_SCHEME POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='1'
-#DARK_SCHEME POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='16'
-#DARK_SCHEME POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='3'
-#DARK_SCHEME POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='16'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='16'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='138'
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export SHELL=/usr/local/bin/zsh
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='16'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='108'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/zpazmandy/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zpazmandy/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='16'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='1'
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/zpazmandy/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zpazmandy/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='16'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='3'
+
+POWERLEVEL9K_STATUS_OK_FOREGROUND='16'
+POWERLEVEL9K_STATUS_OK_BACKGROUND='108'
+
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND='16'
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND='1'
+
+
+export NVM_DIR="/Users/zsolt.pazmandy/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# gcloud autocomplete
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 

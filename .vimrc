@@ -37,7 +37,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'Yggdroot/indentLine'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'neoclide/coc.nvim', {'do': './install.sh nightlyll/undotree'}
+  " Plug 'neoclide/coc.nvim', {'do': './install.sh nightlyll/undotree'}
   Plug 'mbbill/undotree'
   Plug 'mhinz/vim-startify'
   Plug 'junegunn/goyo.vim'
@@ -46,6 +46,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'kien/ctrlp.vim'
   Plug 'yuttie/comfortable-motion.vim'
   Plug 'gcavallanti/vim-noscrollbar'
+  Plug 'edkolev/tmuxline.vim'
+  Plug 'whiteinge/diffconflicts'
 call plug#end()
 
 let mapleader = " "
@@ -173,6 +175,8 @@ nnoremap <Leader>J Lzz
 nnoremap <Leader>K Hzz
 " scroll up
 nnoremap <Leader>d :Gdiff<CR>
+
+nnoremap <Leader>D :DiffConflicts<CR>
 " fug diff
 nnoremap <Leader>s :Gstatus<CR>
 " fug status
@@ -311,6 +315,22 @@ let g:rg_command = 'rg --vimgrep -S'
 " set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline()}
 
 function! Noscrollbar(...)
-    let w:airline_section_z = '%{noscrollbar#statusline(30,"■","◫",["◧"],["◨"])}'
+    let w:airline_section_z = '%{noscrollbar#statusline(10,"■","◫",["◧"],["◨"])}'
 endfunction
 call airline#add_statusline_func('Noscrollbar')
+
+" TMUXLINE
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'y'    : '%a %d/%m',
+      \'z'    : '%R'}
+
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ' '}
