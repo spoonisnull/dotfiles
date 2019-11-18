@@ -136,8 +136,6 @@ nnoremap <Tab> :bn<CR>
 " navigate buffs
 nnoremap <S-Tab> :bp<CR>
 " navigate buffs
-nnoremap <Leader>c :.w !pbcopy<CR><CR>
-" copy to system clipboard
 nnoremap <C-j> :m .+1<CR>==
 " move lines
 nnoremap <C-k> :m .-2<CR>==
