@@ -1,25 +1,35 @@
 source ~/.aliases
 source ~/.secrets
+source ~/.lessrc
 source ~/.z.sh
 
 export ZSH="/Users/zsolt.pazmandy/.oh-my-zsh"
 export SHELL=/usr/local/bin/zsh
 export TERM="xterm-256color"
-VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export RTV_BROWSER=firefox
+export DISPLAY=':0'
+
+VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
 
 eval $(thefuck --alias)
 
-plugins=(compleat docker extract git kubectl osx vi-mode zsh-syntax-highlighting zsh-autosuggestions forgit)
+plugins=(compleat docker extract git kubectl osx vi-mode zsh-syntax-highlighting zsh-autosuggestions forgit history)
+
+FORGIT_FZF_DEFAULT_OPTS="
+--exact
+--border
+--cycle
+--reverse
+--height '80%'
+"
 
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 ZSH_THEME=powerlevel10k/powerlevel10k
 HYPHEN_INSENSITIVE="true"
 DISABLE_UPDATE_PROMPT="true"
-# Uncomment the following line if pasting URLs and other text is messed up
-# DISABLE_MAGIC_FUNCTIONS=true
 ENABLE_CORRECTION="false"
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
@@ -28,7 +38,6 @@ source $ZSH/oh-my-zsh.sh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=white
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=white
@@ -42,16 +51,13 @@ export RTV_BROWSER=chromium
 
 autoload -Uz compinit && compinit
 
-# kube-ps1
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-PS1='$(kube_ps1)'$PS1
-
 # powerlevel9k config
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" ❯ "
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" ❯ "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" $ "
 
-POWERLEVEL9K_CUSTOM_K8SCTX="echo ⎈ \[\$(kubectl config view | grep current | awk '{print \$2}' | cut -d'_' -f 2)\]"
+POWERLEVEL9K_CUSTOM_K8SCTX="echo ⎈ \[\$(kubectl config view | grep current | awk '{print \$2}' | cut -d'_' -f 2)\|$(kubens -c)\]"
 POWERLEVEL9K_CUSTOM_K8SCTX_BACKGROUND='237'
 POWERLEVEL9K_CUSTOM_K8SCTX_FOREGROUND='138'
 
@@ -60,7 +66,7 @@ POWERLEVEL9K_CUSTOM_GCPPROJ_BACKGROUND='238'
 POWERLEVEL9K_CUSTOM_GCPPROJ_FOREGROUND='138'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir ssh dir_writable custom_first)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(kube_ps1 custom_gcpproj custom_k8sctx vcs vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(custom_gcpproj custom_k8sctx vcs vi_mode)
 POWERLEVEL9K_VI_INSERT_MODE_STRING="INS"
 POWERLEVEL9K_STATUS_OK=false
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="NOR"
@@ -114,4 +120,8 @@ export NVM_DIR="/Users/zsolt.pazmandy/.nvm"
 # gcloud autocomplete
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/Users/zsolt.pazmandy/yandex-cloud/path.bash.inc' ]; then source '/Users/zsolt.pazmandy/yandex-cloud/path.bash.inc'; fi
 
