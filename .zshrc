@@ -3,8 +3,8 @@ source ~/.secrets
 source ~/.lessrc
 source ~/.z.sh
 
-export ZSH="/Users/zsolt.pazmandy/.oh-my-zsh"
 export SHELL=/usr/local/bin/zsh
+export ZSH="/Users/zsolt.pazmandy/.oh-my-zsh"
 export TERM="xterm-256color"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export RTV_BROWSER=firefox

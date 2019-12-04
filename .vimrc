@@ -105,6 +105,7 @@ set inccommand=nosplit
 set list lcs=trail:·,tab:»·
 set t_Co=256
 colors gruvbox
+" set background=light
 set background=dark
 
 " MARKDOWN
@@ -208,6 +209,8 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 " move lines
 inoremap <C-f> g<C-]>
 " find ctag
+nnoremap <Leader>! i#!/usr/bin/env bash<Esc>0o<Esc>j
+" insert shebang
 
 vnoremap <silent> <leader>c :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("pbcopy", @") \| let @"=@a<CR>
 " copy selection to system clipboard
