@@ -23,21 +23,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
-  Plug 'connorholyday/vim-snazzy'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'PProvost/vim-ps1'
-  Plug 'terryma/vim-multiple-cursors'
-  Plug 'w0rp/ale'
   Plug 'tommcdo/vim-fubitive'
   Plug 'rizzatti/dash.vim'
-  Plug 'chriskempson/base16-vim'
-  Plug 'morhetz/gruvbox'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'Yggdroot/indentLine'
   Plug 'ryanoasis/vim-devicons'
-  " Plug 'neoclide/coc.nvim', {'do': './install.sh nightlyll/undotree'}
   Plug 'mbbill/undotree'
   Plug 'mhinz/vim-startify'
   Plug 'junegunn/goyo.vim'
@@ -48,7 +41,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'gcavallanti/vim-noscrollbar'
   Plug 'edkolev/tmuxline.vim'
   Plug 'whiteinge/diffconflicts'
-call plug#end()
+  Plug 'morhetz/gruvbox'
+ call plug#end()
+
+syntax enable
+set background=dark
+set t_Co=256
+colorscheme gruvbox
 
 let mapleader = " "
 
@@ -58,7 +57,6 @@ set autoindent
 set autoread
 set backspace=indent,eol,start
 set encoding=utf-8
-set expandtab
 set foldenable
 set foldlevelstart=5
 set hidden
@@ -74,15 +72,12 @@ set noerrorbells
 set noshowmode
 set number
 set path+=**
-set shiftwidth=2
 set showcmd
 set showmatch
 set showtabline=2
 set smartcase
 set smartindent
 set smarttab
-set softtabstop=0
-set tabstop=8
 set visualbell
 set wildmenu
 set clipboard=unnamed
@@ -97,31 +92,29 @@ augroup every
 augroup END
 set scrolloff=3
 set directory^=$HOME/.vim/tmp//
-set termguicolors
 set shortmess+=A
 set undofile
-" set foldcolumn=5
 set inccommand=nosplit
 set list lcs=trail:·,tab:»·
-set t_Co=256
-colors gruvbox
-" set background=light
-set background=dark
 
 " MARKDOWN
-" let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_browser='Safari'
 let vim_markdown_preview_github=1
 
 " GITGUTTER
 let g:gitgutter_override_sign_column_highlight = 1
-hi SignColumn ctermbg=black ctermfg=darkred
-hi GitGutterAdd ctermbg=black ctermfg=darkgreen
-hi GitGutterChange ctermbg=black ctermfg=darkyellow
-hi GitGutterDelete ctermbg=black ctermfg=darkred
-hi GitGutterChangeDelete ctermbg=black ctermfg=darkred
 
-let g:SnazzyTransparent = 1
+hi LineNr                       ctermbg=black
+hi CursorLine                   ctermbg=black
+hi CursorLineNr                 ctermbg=black
+hi SignColumn                   ctermbg=black ctermfg=darkred
+hi GitGutterAdd                 ctermbg=black ctermfg=darkgreen
+hi GitGutterChange              ctermbg=black ctermfg=darkyellow
+hi GitGutterDelete              ctermbg=black ctermfg=darkred
+hi GitGutterChangeDelete        ctermbg=black ctermfg=darkred
+hi Visual                       ctermbg=yellow ctermfg=black
+hi Search                       cterm=NONE ctermbg=yellow ctermfg=black
+hi Normal			ctermbg=black
 
 " MAPPINGS
 
@@ -141,7 +134,7 @@ nnoremap <C-j> :m .+1<CR>==
 " move lines
 nnoremap <C-k> :m .-2<CR>==
 " move lines
-nnoremap <Leader>e :e 
+nnoremap <Leader>e :e
 " edit file
 nnoremap <Leader>w :w<CR>
 " write file
@@ -200,8 +193,8 @@ nnoremap <Leader>D :Goyo<CR>
 nnoremap <Leader><Leader> <C-w><C-w>
 " switch between quickfix and main
 nnoremap <Leader>m :marks<CR>
-" Ctrl-P
-nnoremap <Leader>p :CtrlP<CR>
+
+nnoremap <leader>p ':CtrlPTag '.expand('<cword>').'<cr>''
 
 inoremap <C-j> <Esc>:m .+1<CR>==gi
 " move lines
@@ -238,25 +231,6 @@ let g:NERDTreeIndicatorMapCustom = {
  \ "Unknown": "?"
 \ }
 
-" COC.VIM
-autocmd FileType json syntax match Comment +\/\/.\+$+
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-"
-" suggest down
-inoremap <silent><expr> <C-Space>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<Tab>" :
-\ coc#refresh()
-
-" suggest up
-inoremap <silent><expr> <S-Space>
-\ pumvisible() ? "\<C-p>" :
-\ <SID>check_back_space() ? "\<Tab>" :
-\ coc#refresh()
-
 " AIRLINE
 let g:airline_theme = 'gruvbox'
 let g:airline_focuslost_inactive = 1
@@ -276,8 +250,8 @@ let g:airline#extensions#tabline#buf_label_first = 1
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#fnamecollapse = 1
 let g:airline#extensions#tabline#fnametruncate = 12
-let g:airline#extensions#tabline#left_sep = "\ue0b0 "
-let g:airline#extensions#tabline#left_alt_sep = "\ue0b1"
+let g:airline#extensions#tabline#left_sep = " "
+let g:airline#extensions#tabline#left_alt_sep = " "
 let g:airline_mode_map = {
  \ '__' : '-',
  \ 'c'  : 'COM',
@@ -300,20 +274,17 @@ let g:airline_mode_map = {
 
 " INDENTLINE
 let g:indentLine_char = '¦'
-" let g:indentLine_first_char = ' '
 let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_leadingSpaceChar = ' '
 let g:indentLine_showFirstIndentLevel = 1
-" let g:indentLine_setConceal = 0
-" let g:indentLine_conceallevel = 3
 
 " DEVICON
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:webdevicons_enable_airline_tabline = 0
+
 
 " VIM-RIPGREP
 let g:rg_command = 'rg --vimgrep -S'
-
-" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline()}
 
 function! Noscrollbar(...)
     let w:airline_section_z = '%{noscrollbar#statusline(10,"■","◫",["◧"],["◨"])}'
